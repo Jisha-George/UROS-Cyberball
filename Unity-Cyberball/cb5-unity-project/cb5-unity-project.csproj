@@ -94,6 +94,8 @@
     <Compile Include="Assets\ColorPicker\DrawGUIOrderColorPicker.cs" />
     <Compile Include="Assets\ColorPicker\ObjectColor.cs" />
     <Compile Include="Assets\ColorPicker\PSColor.cs" />
+    <Compile Include="Assets\ColorSkies\Demo\Scripts\LookCamera.cs" />
+    <Compile Include="Assets\ColorSkies\Demo\Scripts\SkyboxChanger.cs" />
     <Compile Include="Assets\Demo\scripts\BaseDemoGUI.cs" />
     <Compile Include="Assets\Demo\scripts\FPSHUD.cs" />
     <Compile Include="Assets\Demo\scripts\PathTweenGUI.cs" />
@@ -103,6 +105,7 @@
     <Compile Include="Assets\Demo\scripts\TweenChainGUI.cs" />
     <Compile Include="Assets\Demo\scripts\TweenFlowGUI.cs" />
     <Compile Include="Assets\Extra GUI Skins\SkinTest.cs" />
+    <Compile Include="Assets\Free Asset - 2D Handcrafted Art\Scripts\CamerController.cs" />
     <Compile Include="Assets\Grass And Flowers Pack 1\Example Scene\SimpleTextureDrawing.cs" />
     <Compile Include="Assets\Scripts\BeginExperimentScreen.cs" />
     <Compile Include="Assets\Scripts\ChatContainer.cs" />
@@ -203,6 +206,10 @@
     <None Include="Assets\ColorPicker\license.txt" />
     <None Include="Assets\Fonts\Adobe Gothic Std 63pt\Adobe Gothic Std 63pt.txt" />
     <None Include="Assets\Fonts\Myr Pro BoldCon 62\Myr Pro BoldCon 62.txt" />
+    <None Include="Assets\Forest road BG\READ_ME_\READ_ME_.txt" />
+    <None Include="Assets\Free Asset - 2D Handcrafted Art\Readme.txt" />
+    <None Include="Assets\Free Asset - 2D Handcrafted Art\Shader\NormalMappedSprite-Animated.shader" />
+    <None Include="Assets\Free Asset - 2D Handcrafted Art\Shader\NormalMappedTileAnimated.shader" />
     <None Include="Assets\Grass And Flowers Pack 1\Example Scene\Skyboxes\_skybox info.txt" />
     <None Include="Assets\Plugins\GoKit\easing\easeEquationsLicense.txt" />
     <None Include="Assets\TK2DROOT\tk2d\Editor\EditorUtility.shader" />
