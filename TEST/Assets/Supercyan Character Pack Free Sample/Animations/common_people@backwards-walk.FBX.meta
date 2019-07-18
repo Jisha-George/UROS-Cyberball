@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 854ef493abe79464ca6e9795fb330040
+guid: 37a38f348096f8d47a157fb6de0c5cab
 labels:
 - Animation
 - Movement
@@ -82,6 +82,8 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 

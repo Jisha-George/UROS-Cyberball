@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 09f13c3460d45ed43862ef43c7ddedb1
+guid: da0618809c345c74d8494b379880f51c
 labels:
 - Animation
 timeCreated: 1483629630
@@ -81,6 +81,8 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
