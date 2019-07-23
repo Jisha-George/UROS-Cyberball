@@ -11,8 +11,8 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        ball.GetComponent<Rigidbody>().useGravity = false;
-        anim = GetComponent < Animator>();
+        //ball.GetComponent<Rigidbody>().useGravity = false;
+        anim = GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour {
             if (Input.GetMouseButtonDown(0))
             {
                 holdingBall = false;
-                ball.GetComponent<Rigidbody>().useGravity = true;
+                //ball.GetComponent<Rigidbody>().useGravity = true;
                 anim.SetTrigger("isThrowing");
             }
         }
