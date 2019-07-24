@@ -15,12 +15,16 @@ public class BallScript : MonoBehaviour {
     void Start () {
         transform.parent = parentbone.transform;
         anim = GetComponent<Animator>();
+  
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        Vector3 LPos = BallHandL.transform.position;
+        Vector3 BPos = Ball.transform.position;
+      //  Debug.Log(Vector3.Distance(LPos, BPos));
+
+    }
 
    public void ReleaseMe() {
         Vector3 LPos = BallHandL.transform.position;
@@ -34,6 +38,8 @@ public class BallScript : MonoBehaviour {
             //rigid.AddForce(4.010345f, 3.13156f, 0, ForceMode.VelocityChange);
             anim.SetTrigger("throw");
             BallHandL.SetActive(false);
+            Debug.Log("Lpos: " + Vector3.Distance(LPos, BPos));
+
         }
     }
 }

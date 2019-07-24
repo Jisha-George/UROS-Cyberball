@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
     public GameObject Ball;
     public GameObject BallHandR;
     static Animator anim;
+    public GameObject parent;
 
     //public bool holdingBall = true;
 
@@ -14,12 +15,11 @@ public class Player : MonoBehaviour {
 	void Start () {
         //ball.GetComponent<Rigidbody>().useGravity = false;
         anim = GetComponent<Animator>();
-       // BallHandR.SetActive(false);
+        BallHandR.SetActive(false);
     }
 	
 	// Update is called once per frame
 	void Update () {
-
         //if (holdingBall)
         //{
         //    if (Input.GetMouseButtonDown(0))
@@ -29,13 +29,19 @@ public class Player : MonoBehaviour {
         //        anim.SetTrigger("isThrowing");
         //    }
         //}
+        Vector3 BPos = Ball.transform.position;
+        Vector3 RPos = BallHandR.transform.position;
+        Debug.Log("RPos: " + Vector3.Distance(RPos, BPos));
+        if (Vector3.Distance(RPos, BPos) <= 45.8)
+        {
+            Debug.Log("RPos: " + Vector3.Distance(RPos, BPos));
+            anim.SetTrigger("catch");
+        }
+    }
 
-
-        //if (Vector3.Distance(Ball.transform.position, BallHandR.transform.position) >= 1)
-        //{
-        //    anim.SetTrigger("isCatching");
-        //   // BallHandR.SetActive(true);
-        //  //  Ball.SetActive(false);
-        //}
+    public void catchMe(){
+        BallHandR.SetActive(true);
+        BallHandR.transform.parent = parent.transform;
+        Ball.SetActive(false);
     }
 }
