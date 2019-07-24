@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class BallScript : MonoBehaviour {
 
+    public GameObject BallHandL;
     public GameObject parentbone;
-  //  public Rigidbody rigid;
-   // public Vector3 lasPos;
-   // public Vector3 curVel;
+    public GameObject Ball;
+
     static Animator anim;
+    
 
     // Use this for initialization
     void Start () {
         transform.parent = parentbone.transform;
-        //rigid.useGravity = false;
         anim = GetComponent<Animator>();
     }
 	
@@ -23,13 +23,18 @@ public class BallScript : MonoBehaviour {
 	}
 
    public void ReleaseMe() {
-        transform.parent = null;
-        //rigid.useGravity = true;
-        transform.rotation = parentbone.transform.rotation;
-        // rigid.AddForce(transform.forward * 40000);
-        //rigid.AddForce(4.010345f, 3.13156f, 0, ForceMode.VelocityChange);
+        Vector3 LPos = BallHandL.transform.position;
+        Vector3 BPos = Ball.transform.position;
 
-       anim.SetTrigger("throw");
+        if  (Vector3.Distance(LPos,BPos) >= 1){
+            transform.parent = null;
+            //rigid.useGravity = true;
+            //transform.rotation = parentbone.transform.rotation;
+            // rigid.AddForce(transform.forward * 40000);
+            //rigid.AddForce(4.010345f, 3.13156f, 0, ForceMode.VelocityChange);
+            anim.SetTrigger("throw");
+            BallHandL.SetActive(false);
+        }
     }
 }
 
