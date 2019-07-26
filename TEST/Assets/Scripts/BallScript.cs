@@ -38,8 +38,9 @@ public class BallScript : MonoBehaviour {
             //rigid.AddForce(4.010345f, 3.13156f, 0, ForceMode.VelocityChange);
             anim.SetTrigger("throw");
             BallHandL.SetActive(false);
+            
             Debug.Log("Lpos: " + Vector3.Distance(LPos, BPos));
-
+            anim.SetBool("isHoldingBall",false);
         }
     }
 }
