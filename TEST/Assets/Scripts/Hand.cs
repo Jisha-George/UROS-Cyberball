@@ -22,12 +22,6 @@ public class Hand : MonoBehaviour {
     public void BallCatch()
     {
         PlayerBall.SetActive(true);
-
         PlayerBall.transform.parent = parentbone.transform;
-
     }
-
-
-
-
 }
