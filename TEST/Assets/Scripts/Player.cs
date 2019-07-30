@@ -6,8 +6,9 @@ public class Player : MonoBehaviour {
 
     public GameObject Ball;
     public GameObject BallHandR;
-    static Animator anim;
     public GameObject parent;
+    static Animator anim;
+    
 
 	// Use this for initialization
 	void Start () {

@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Hand : MonoBehaviour {
 
-    public GameObject parentbone;
+    public GameObject parent;
     public GameObject PlayerBall;
+    public GameObject movingBall;
     static Animator anim;
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        PlayerBall.SetActive(false);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -19,9 +20,10 @@ public class Hand : MonoBehaviour {
 	}
 
 
-    public void BallCatch()
-    {
+    public void BallCatch() {
+        PlayerBall.transform.parent = parent.transform;
+        Debug.Log("PlayerBall:" + PlayerBall.transform.position);
         PlayerBall.SetActive(true);
-        PlayerBall.transform.parent = parentbone.transform;
+        movingBall.SetActive(false);
     }
 }
