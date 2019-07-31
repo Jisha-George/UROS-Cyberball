@@ -18,12 +18,7 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //if (holdingBall){
-        //    if (Input.GetMouseButtonDown(0)){
-        //        holdingBall = false;
-        //        anim.SetTrigger("isThrowing");
-        //    }
-        //}
+
         Vector3 BPos = Ball.transform.position;
         Vector3 RPos = BallHandR.transform.position;
         Debug.Log("RPos: " + Vector3.Distance(RPos, BPos));

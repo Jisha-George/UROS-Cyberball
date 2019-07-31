@@ -25,5 +25,12 @@ public class Hand : MonoBehaviour {
         Debug.Log("PlayerBall:" + PlayerBall.transform.position);
         PlayerBall.SetActive(true);
         movingBall.SetActive(false);
-    }
+    } 
+    
+    //if (holdingBall){
+    //    if (Input.GetMouseButtonDown(0)){
+    //        holdingBall = false;
+    //        anim.SetTrigger("isThrowing");
+    //    }
+    //}
 }

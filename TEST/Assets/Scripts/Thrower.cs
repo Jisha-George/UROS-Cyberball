@@ -14,7 +14,18 @@ public class Thrower : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (anim.GetBool("isHoldingBall"))
+        {
+            int t = Random.Range(1, 2);
+            if(t == 1)
+            {
+                anim.SetTrigger("isThrowing");
+            }
+            else
+            {
+                anim.SetTrigger("T2P");
+            }
+        }
 	}
 
     void ThrowBall() {
@@ -31,6 +42,6 @@ public class Thrower : MonoBehaviour {
     }
 
     
-
+    
 
 }
