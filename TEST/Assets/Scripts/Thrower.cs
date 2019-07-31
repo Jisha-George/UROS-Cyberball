@@ -19,12 +19,18 @@ public class Thrower : MonoBehaviour {
 
     void ThrowBall() {
        BallScript ballscript = (BallScript)theball.GetComponent ("BallScript");
-        ballscript.ReleaseMe();
+       ballscript.ReleaseMe();
     }
 
     void Throw()
     {
-        anim.SetTrigger("isThrowing");
+        BallScript ballscript = (BallScript)theball.GetComponent("BallScript");
+        ballscript.Throw2Player();
+        anim.SetTrigger("T2P");
         //theball.SetActive(false);
     }
+
+    
+
+
 }

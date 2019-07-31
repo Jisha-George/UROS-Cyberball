@@ -36,4 +36,12 @@ public class BallScript : MonoBehaviour {
             anim.SetBool("isHoldingBall", false);
         }
     }
+
+    public void Throw2Player()
+    {
+        transform.parent = null;
+        BallHandL.SetActive(false);
+        anim.SetTrigger("throw");
+
+    }
 }
