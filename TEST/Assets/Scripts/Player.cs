@@ -21,9 +21,8 @@ public class Player : MonoBehaviour {
 
         Vector3 BPos = Ball.transform.position;
         Vector3 RPos = BallHandR.transform.position;
-        Debug.Log("RPos: " + Vector3.Distance(RPos, BPos));
         if (Vector3.Distance(RPos, BPos) <= 45.8) {
-            Debug.Log("RPos: " + Vector3.Distance(RPos, BPos));
+           // Debug.Log("RPos: " + Vector3.Distance(RPos, BPos));
             anim.SetTrigger("catch");
         }
     }
