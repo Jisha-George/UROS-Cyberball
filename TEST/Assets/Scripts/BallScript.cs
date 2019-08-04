@@ -7,7 +7,6 @@ public class BallScript : MonoBehaviour {
     public GameObject BallHandL;
     public GameObject parentbone;
     public GameObject Ball;
-    public GameObject MBall;
 
     static Animator anim;
 
@@ -30,7 +29,7 @@ public class BallScript : MonoBehaviour {
         Debug.Log("poof");
     }
 
-    public void ThrowBall()
+    public void RelPlayer()
     {
         Ball.transform.parent = null;
         BallHandL.SetActive(false);

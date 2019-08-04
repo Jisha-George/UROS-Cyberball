@@ -19323,7 +19323,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 0
+  - time: 3.3333333
     functionName: WaitSeconds
     data: 
     objectReferenceParameter: {fileID: 0}

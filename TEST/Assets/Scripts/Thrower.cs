@@ -6,15 +6,15 @@ public class Thrower : MonoBehaviour {
 
     public GameObject theball;
     static Animator anim;
-    public float randomWait;
-    public int rand;
+    float randomWait;
+    int rand;
     
 
     // Use this for initialization
     void Start () {
         anim = GetComponent<Animator>();
         anim.SetBool("isHoldingBall", true);
-        rand = Random.Range(2, 3);
+        rand = Random.Range(1, 3);
     }
 
 
@@ -25,7 +25,7 @@ public class Thrower : MonoBehaviour {
 
     IEnumerator WaitSeconds()
     {
-        var randomWait = Random.Range(3, 7);
+        var randomWait = Random.Range(1, 4);
         yield return new WaitForSeconds(randomWait);
         Debug.Log("Waiting " + randomWait);
 
@@ -69,7 +69,7 @@ public class Thrower : MonoBehaviour {
         else
         {
             BallScript ballscript = (BallScript)theball.GetComponent("BallScript");
-            ballscript.ThrowBall();
+            ballscript.RelPlayer();
         }
     }
 }
