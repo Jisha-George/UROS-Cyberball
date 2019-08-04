@@ -116,6 +116,7 @@
     <Compile Include="Assets\Scripts\FilePathOpen.cs" />
     <Compile Include="Assets\Scripts\FilePathSave.cs" />
     <Compile Include="Assets\Scripts\Hand.cs" />
+    <Compile Include="Assets\Scripts\HandRight.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Throw2Player.cs" />
     <Compile Include="Assets\Scripts\Thrower.cs" />
