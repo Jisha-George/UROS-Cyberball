@@ -14,7 +14,7 @@ public class Thrower : MonoBehaviour {
     void Start () {
         anim = GetComponent<Animator>();
         anim.SetBool("isHoldingBall", true);
-        rand = Random.Range(1, 3);
+        rand = Random.Range(2, 3);
     }
 
 
@@ -72,4 +72,11 @@ public class Thrower : MonoBehaviour {
             ballscript.RelPlayer();
         }
     }
+
+    private void OnMouseDown()
+    {
+        Hand handscript = (Hand)anim.GetComponent("Hand");
+    }
+
+
 }
