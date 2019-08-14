@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Thrower : MonoBehaviour {
 
+    //create variables
     public GameObject theball;
     static Animator anim;
     float randomWait;
@@ -13,51 +14,45 @@ public class Thrower : MonoBehaviour {
     // Use this for initialization
     void Start () {
         anim = GetComponent<Animator>();
-        anim.SetBool("isHoldingBall", true);
+        anim.SetBool("isHoldingBall", true); //initialise as holding ball
         rand = Random.Range(2, 3);
     }
-
 
 	// Update is called once per frame
 	void Update () {
         
 	}
 
+    //wait random seconds
     IEnumerator WaitSeconds()
     {
-        var randomWait = Random.Range(1, 4);
-        yield return new WaitForSeconds(randomWait);
+        var randomWait = Random.Range(1, 4); //between 1 to 3 seconds
+        yield return new WaitForSeconds(randomWait); //call random fucntion
         Debug.Log("Waiting " + randomWait);
 
-        if (anim.GetBool("isHoldingBall"))
+        if (anim.GetBool("isHoldingBall")) //if holding a ball
         {
             Debug.Log("HoldBall");
             
-            if (rand == 1)
+            if (rand == 1) //if random number is 1 throw to AI
             {
                 anim.SetTrigger("isThrowing");
                 Debug.Log("Thrown");
                 ThrowBall();
             }
-            else
+            else //if random number is 2 the AI throws to the player
             {
-                Debug.Log("Throw2Player");
-                ThrowPlayer();
+                Debug.Log("PlayerThrow");
+                ThrowBall();
                 anim.SetTrigger("T2P");
             }
         }
     }
 
     void ThrowBall() {
-        Debug.Log("Release");
         anim.SetBool("isHoldingBall", false);
     }
 
-    void ThrowPlayer()
-    {
-        Debug.Log("PlayerThrow");
-        anim.SetBool("isHoldingBall", false);
-    }
 
     void ReleaseBall()
     {
@@ -72,11 +67,4 @@ public class Thrower : MonoBehaviour {
             ballscript.RelPlayer();
         }
     }
-
-    private void OnMouseDown()
-    {
-        Hand handscript = (Hand)anim.GetComponent("Hand");
-    }
-
-
 }
