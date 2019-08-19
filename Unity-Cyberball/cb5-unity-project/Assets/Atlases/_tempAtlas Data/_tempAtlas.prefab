@@ -5,10 +5,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 400000}
-  - 114: {fileID: 11400000}
+  - component: {fileID: 400000}
+  - component: {fileID: 11400000}
   m_Layer: 0
   m_Name: _tempAtlas
   m_TagString: Untagged
@@ -28,6 +28,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -45,24 +46,24 @@ MonoBehaviour:
   spriteDefinitions:
   - name: heptagon
     boundsData:
-    - {x: .00156250596, y: 0, z: 0}
-    - {x: .696875036, y: .706250012, z: 0}
+    - {x: 0.001562506, y: 0, z: 0}
+    - {x: 0.69687504, y: 0.70625, z: 0}
     untrimmedBoundsData:
-    - {x: .00156250596, y: 0, z: 0}
-    - {x: .696875036, y: .706250012, z: 0}
-    texelSize: {x: .00312500005, y: .00312500005}
+    - {x: 0.001562506, y: 0, z: 0}
+    - {x: 0.69687504, y: 0.70625, z: 0}
+    texelSize: {x: 0.003125, y: 0.003125}
     positions:
-    - {x: -.346875012, y: -.353125006, z: 0}
-    - {x: .350000024, y: -.353125006, z: 0}
-    - {x: -.346875012, y: .353125006, z: 0}
-    - {x: .350000024, y: .353125006, z: 0}
+    - {x: -0.346875, y: -0.353125, z: 0}
+    - {x: 0.35000002, y: -0.353125, z: 0}
+    - {x: -0.346875, y: 0.353125, z: 0}
+    - {x: 0.35000002, y: 0.353125, z: 0}
     normals: []
     tangents: []
     uvs:
-    - {x: .00781640597, y: .451173842}
-    - {x: .00781640597, y: .886716783}
-    - {x: .890621066, y: .451173842}
-    - {x: .890621066, y: .886716783}
+    - {x: 0.007816406, y: 0.45117384}
+    - {x: 0.007816406, y: 0.8867168}
+    - {x: 0.89062107, y: 0.45117384}
+    - {x: 0.89062107, y: 0.8867168}
     indices: 000000000300000001000000020000000300000000000000
     material: {fileID: 2100000, guid: 98c4ef2d42c1745d0bdf8b9328c20f4c, type: 2}
     materialId: 0
@@ -87,24 +88,24 @@ MonoBehaviour:
     attachPoints: []
   - name: nonagon
     boundsData:
-    - {x: .00156250596, y: -.00156250596, z: 0}
-    - {x: .703125, y: .703125, z: 0}
+    - {x: 0.001562506, y: -0.001562506, z: 0}
+    - {x: 0.703125, y: 0.703125, z: 0}
     untrimmedBoundsData:
-    - {x: .00156250596, y: -.00156250596, z: 0}
-    - {x: .703125, y: .703125, z: 0}
-    texelSize: {x: .00312500005, y: .00312500005}
+    - {x: 0.001562506, y: -0.001562506, z: 0}
+    - {x: 0.703125, y: 0.703125, z: 0}
+    texelSize: {x: 0.003125, y: 0.003125}
     positions:
-    - {x: -.349999994, y: -.353125006, z: 0}
-    - {x: .353125006, y: -.353125006, z: 0}
-    - {x: -.349999994, y: .349999994, z: 0}
-    - {x: .353125006, y: .349999994, z: 0}
+    - {x: -0.35, y: -0.353125, z: 0}
+    - {x: 0.353125, y: -0.353125, z: 0}
+    - {x: -0.35, y: 0.35, z: 0}
+    - {x: 0.353125, y: 0.35, z: 0}
     normals: []
     tangents: []
     uvs:
-    - {x: .00781640597, y: .00390820298}
-    - {x: .886714816, y: .00390820298}
-    - {x: .00781640597, y: .443357408}
-    - {x: .886714816, y: .443357408}
+    - {x: 0.007816406, y: 0.003908203}
+    - {x: 0.8867148, y: 0.003908203}
+    - {x: 0.007816406, y: 0.4433574}
+    - {x: 0.8867148, y: 0.4433574}
     indices: 000000000300000001000000020000000300000000000000
     material: {fileID: 2100000, guid: 98c4ef2d42c1745d0bdf8b9328c20f4c, type: 2}
     materialId: 0
@@ -144,7 +145,7 @@ MonoBehaviour:
   loadable: 0
   invOrthoSize: 1
   halfTargetHeight: 320
-  buildKey: 1147924057
+  buildKey: 901495487
   dataGuid: f02baa4283a7d4c4bbbf7533f113338f
   managedSpriteCollection: 0
   hasPlatformData: 0
@@ -161,4 +162,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
   m_IsPrefabParent: 1
-  m_IsExploded: 1
