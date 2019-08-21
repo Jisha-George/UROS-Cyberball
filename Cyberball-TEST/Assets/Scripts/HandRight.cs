@@ -7,6 +7,7 @@ public class HandRight : MonoBehaviour {
     public GameObject parent;
     public GameObject PlayerBall;
     public GameObject movingBall;
+
     static Animator anim;
 
 	// Use this for initialization
@@ -21,30 +22,31 @@ public class HandRight : MonoBehaviour {
         Vector3 BPos = PlayerBall.transform.position;
         Vector3 RPos = movingBall.transform.position;
         
-        if (Vector3.Distance(RPos, BPos) <= 200 && Vector3.Distance(RPos,BPos) >= 190)
+        if (Vector3.Distance(RPos, BPos) <= 200 && Vector3.Distance(RPos,BPos) >= 199)
         {
             Debug.Log("RPos: " + Vector3.Distance(RPos, BPos));
             anim.SetTrigger("Catching");
-            
         }
     }
-
-
+    
     public void BallCatch() {
-        Vector3 BPos = PlayerBall.transform.position;
-        Vector3 RPos = movingBall.transform.position;
-        PlayerBall.SetActive(true);
-        PlayerBall.transform.parent = parent.transform;
-        //Debug.Log("PlayerBall:" + PlayerBall.transform.position);
-        Debug.Log("RPos: " + Vector3.Distance(RPos, BPos));
         movingBall.SetActive(false);
         anim.SetBool("Ball", true);
-    } 
-    
-    //if (holdingBall){
-    //    if (Input.GetMouseButtonDown(0)){
-    //        holdingBall = false;
-    //        anim.SetTrigger("isThrowing");
-    //    }
-    //}
+    }
+
+    public void BallThrow()
+    {
+       if (anim.GetBool("Ball"))
+       {
+            anim.SetBool("Ball", false);
+            anim.SetTrigger("Throwing");
+        }
+    }
 }
+            //HandBall handball = (HandBall)PlayerBall.GetComponent("HandBall");
+            //handball.PlayerRel();
+            //PlayerBall.SetActive(false);
+            //PlayerBall.transform.parent = null;
+            //movingBall.SetActive(true);
+            //BallScript ballscript = (BallScript)movingBall.GetComponent("BallScript");
+            //ballscript.PlayerRel();
