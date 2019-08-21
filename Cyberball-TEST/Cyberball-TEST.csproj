@@ -88,14 +88,6 @@
     <Compile Include="Assets\ColorSkies\Demo\Scripts\LookCamera.cs" />
     <Compile Include="Assets\ColorSkies\Demo\Scripts\SkyboxChanger.cs" />
     <Compile Include="Assets\Grass And Flowers Pack 1\Example Scene\SimpleTextureDrawing.cs" />
-    <Compile Include="Assets\OLD\oldscript\BallScript.cs" />
-    <Compile Include="Assets\OLD\oldscript\FilePathOpen.cs" />
-    <Compile Include="Assets\OLD\oldscript\FilePathSave.cs" />
-    <Compile Include="Assets\OLD\oldscript\Hand.cs" />
-    <Compile Include="Assets\OLD\oldscript\HandRight.cs" />
-    <Compile Include="Assets\OLD\oldscript\Player.cs" />
-    <Compile Include="Assets\OLD\oldscript\Throw2Player.cs" />
-    <Compile Include="Assets\OLD\oldscript\Thrower.cs" />
     <Compile Include="Assets\Scripts\BallScript.cs" />
     <Compile Include="Assets\Scripts\ButtonScript.cs" />
     <Compile Include="Assets\Scripts\FilePathOpen.cs" />
