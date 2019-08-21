@@ -1,1 +1,1 @@
-Assets/Animations/common_people@wave.FBX
+Assets/Decorations/car_blue.fbx
