@@ -1,1 +1,1 @@
-Assets/TreePack1_Free/TreePack1/Tree2/Texture/Leaf9.png
+Assets/Animations/common_people@wave.FBX
