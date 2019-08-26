@@ -40,7 +40,6 @@ public class Hand : MonoBehaviour {
        {
             anim.SetBool("Ball", false);
             anim.SetTrigger("Throwing");
-
        }
     }
 
