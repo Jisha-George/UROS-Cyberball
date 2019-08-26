@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class HandRight : MonoBehaviour {
 
-    public GameObject parent;
     public GameObject PlayerBall;
     public GameObject movingBall;
 
@@ -15,16 +14,16 @@ public class HandRight : MonoBehaviour {
         anim = GetComponent<Animator>();
         PlayerBall.SetActive(false);
         anim.SetBool("Ball", false);
+       
     }
 	
 	// Update is called once per frame
 	void Update () {
         Vector3 BPos = PlayerBall.transform.position;
         Vector3 RPos = movingBall.transform.position;
-        
-        if (Vector3.Distance(RPos, BPos) <= 200 && Vector3.Distance(RPos,BPos) >= 199)
+
+        if (Vector3.Distance(RPos, BPos) <= 200 && Vector3.Distance(RPos, BPos) >= 199)
         {
-            Debug.Log("RPos: " + Vector3.Distance(RPos, BPos));
             anim.SetTrigger("Catching");
         }
     }
@@ -40,7 +39,7 @@ public class HandRight : MonoBehaviour {
        {
             anim.SetBool("Ball", false);
             anim.SetTrigger("Throwing");
-        }
+       }
     }
 }
             //HandBall handball = (HandBall)PlayerBall.GetComponent("HandBall");

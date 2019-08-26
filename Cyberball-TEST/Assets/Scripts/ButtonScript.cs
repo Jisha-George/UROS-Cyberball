@@ -17,11 +17,9 @@ public class ButtonScript : MonoBehaviour {
         SceneManager.LoadScene("Settings");
     }
 
-
-
     public void BackB()
     {
-
+        SceneManager.LoadScene("Welcome Screen");
     }
 
     public void StartB()

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     public GameObject Ball;
+    public GameObject Ball2;
     public GameObject BallHandR;
     public GameObject parent;
     static Animator anim;

@@ -15,6 +15,7 @@ public class BallScript : MonoBehaviour {
     {
         BallHandL.transform.parent = parentbone.transform;
         anim = GetComponent<Animator>();
+        
     }
 	
 	// Update is called once per frame
@@ -27,6 +28,7 @@ public class BallScript : MonoBehaviour {
         anim.SetTrigger("Throwing");
         Ball.transform.parent = null;
         BallHandL.SetActive(false);
+        Ball.SetActive(true);
         Debug.Log("poof");
     }
 
@@ -34,9 +36,12 @@ public class BallScript : MonoBehaviour {
     {
         Ball.transform.parent = null;
         BallHandL.SetActive(false);
+        Ball.SetActive(true);
         anim.SetTrigger("T2P");
         Debug.Log("PlayerCatch!");
     }
+
+
 
     //public void PlayerRel()
     //{

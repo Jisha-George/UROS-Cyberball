@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Thrower : MonoBehaviour {
 
-    //create variables
-    public GameObject theball;
+    //create variable
+    public GameObject Ball;
+    public GameObject Ball2;
+    public GameObject BallHandL;
+    public GameObject parent;
     static Animator anim;
     float randomWait;
     int rand;
@@ -15,13 +18,19 @@ public class Thrower : MonoBehaviour {
     void Start () {
         anim = GetComponent<Animator>();
         anim.SetBool("isHoldingBall", true); //initialise as holding ball
+        anim.SetBool("HandThrow", false); //initialise as holding ball
         rand = Random.Range(2, 3);
     }
 
 	// Update is called once per frame
 	void Update () {
-        
-	}
+        Vector3 BPos = Ball2.transform.position;
+        Vector3 RPos = Ball.transform.position;
+        if (Vector3.Distance(RPos, BPos) <= 83 && Vector3.Distance(RPos, BPos) >= 80 && anim.GetBool("HandThrow"))
+        {
+            anim.SetTrigger("P2T");
+        }
+    }
 
     //wait random seconds
     IEnumerator WaitSeconds()
@@ -42,9 +51,9 @@ public class Thrower : MonoBehaviour {
             }
             else //if random number is 2 the AI throws to the player
             {
+                anim.SetTrigger("T2P");
                 Debug.Log("PlayerThrow");
                 ThrowBall();
-                anim.SetTrigger("T2P");
             }
         }
     }
@@ -53,18 +62,32 @@ public class Thrower : MonoBehaviour {
         anim.SetBool("isHoldingBall", false);
     }
 
-
     void ReleaseBall()
     {
         if (rand == 1)
         {
-            BallScript ballscript = (BallScript)theball.GetComponent("BallScript");
+            BallScript ballscript = (BallScript)BallHandL.GetComponent("BallScript");
             ballscript.Rel();
         }
         else
         {
-            BallScript ballscript = (BallScript)theball.GetComponent("BallScript");
+            BallScript ballscript = (BallScript)BallHandL.GetComponent("BallScript");
             ballscript.RelPlayer();
         }
+    }
+
+    public void catchMe()
+    {
+        BallHandL.SetActive(true);
+        BallHandL.transform.parent = parent.transform;
+        Ball.SetActive(false);
+        anim.SetBool("isHoldingBall", true);
+        anim.SetBool("HandThrow", false);
+        anim.ResetTrigger("P2T");
+    }
+
+    public void Press()
+    {
+        anim.SetBool("HandThrow", true);
     }
 }
