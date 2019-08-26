@@ -22,7 +22,7 @@ public class HandRight : MonoBehaviour {
         Vector3 BPos = PlayerBall.transform.position;
         Vector3 RPos = movingBall.transform.position;
         
-        if (Vector3.Distance(RPos, BPos) <= 200 && Vector3.Distance(RPos,BPos) >= 199)
+        if (Vector3.Distance(RPos, BPos) <= 200 && Vector3.Distance(RPos,BPos) >= 198)
         {
             Debug.Log("RPos: " + Vector3.Distance(RPos, BPos));
             anim.SetTrigger("Catching");

@@ -21,7 +21,7 @@ public class Hand : MonoBehaviour {
         Vector3 BPos = PlayerBall.transform.position;
         Vector3 RPos = movingBall.transform.position;
         
-        if (Vector3.Distance(RPos, BPos) <= 200 && Vector3.Distance(RPos,BPos) >= 199)
+        if (Vector3.Distance(RPos, BPos) <= 200 && Vector3.Distance(RPos,BPos) >= 198)
         {
             anim.SetTrigger("Catching");
         }

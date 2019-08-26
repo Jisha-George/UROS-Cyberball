@@ -7,6 +7,8 @@ public class BallScript : MonoBehaviour {
     public GameObject BallHandL;
     public GameObject parentbone;
     public GameObject Ball;
+    public GameObject HandL;
+    public GameObject HandR;
 
     static Animator anim;
 
@@ -41,6 +43,13 @@ public class BallScript : MonoBehaviour {
         Debug.Log("PlayerCatch!");
     }
 
+    public void playercatch()
+    {
+        Hand HandScript = (Hand)HandL.GetComponent("Hand");
+        HandScript.CatchBall();
+        HandRight HandRight = (HandRight)HandR.GetComponent("HandRight");
+        HandRight.CatchBall();
+    }
 
 
     //public void PlayerRel()

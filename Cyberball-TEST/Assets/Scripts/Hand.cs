@@ -20,14 +20,19 @@ public class Hand : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 BPos = PlayerBall.transform.position;
-        Vector3 RPos = Ball.transform.position;
+        //Vector3 BPos = PlayerBall.transform.position;
+        //Vector3 RPos = Ball.transform.position;
        
-        if (Vector3.Distance(RPos, BPos) <= 200 && Vector3.Distance(RPos,BPos) >= 199)
-        {
-            Debug.Log("Thrower: " + Vector3.Distance(RPos, BPos));
-            anim.SetTrigger("Catching");
-        }
+        //if (Vector3.Distance(RPos, BPos) <= 200 && Vector3.Distance(RPos,BPos) >= 199)
+        //{
+        //    Debug.Log("Thrower: " + Vector3.Distance(RPos, BPos));
+        //    anim.SetTrigger("Catching");
+        //}
+    }
+
+    public void CatchBall()
+    {
+        anim.SetTrigger("Catching");
     }
 
     public void BallCatch() {

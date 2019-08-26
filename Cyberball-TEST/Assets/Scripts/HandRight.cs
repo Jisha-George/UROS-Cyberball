@@ -19,18 +19,17 @@ public class HandRight : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 BPos = PlayerBall.transform.position;
-        Vector3 RPos = movingBall.transform.position;
 
-        if (Vector3.Distance(RPos, BPos) <= 200 && Vector3.Distance(RPos, BPos) >= 199)
-        {
-            anim.SetTrigger("Catching");
-        }
     }
     
     public void BallCatch() {
         movingBall.SetActive(false);
         anim.SetBool("Ball", true);
+    }
+
+    public void CatchBall()
+    {
+        anim.SetTrigger("Catching");
     }
 
     public void BallThrow()
