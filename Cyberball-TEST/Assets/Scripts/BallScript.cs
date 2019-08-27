@@ -9,6 +9,8 @@ public class BallScript : MonoBehaviour {
     public GameObject Ball;
     public GameObject HandL;
     public GameObject HandR;
+    public GameObject AJR;
+    public GameObject AJL;
 
     static Animator anim;
 
@@ -51,12 +53,15 @@ public class BallScript : MonoBehaviour {
         HandRight.CatchBall();
     }
 
+    public void rightcatch()
+    {
+        Thrower RightScript = (Thrower)AJR.GetComponent("Thrower");
+        RightScript.RightPlayerCatch();
+    }
 
-    //public void PlayerRel()
-    //{
-    //    Ball.transform.parent = null;
-    //    PlayerBall.SetActive(false);
-    //    anim.SetTrigger("PlayerThrowR");
-    //    Debug.Log("PlayerCatch!");
-    //}
+    public void leftcatch()
+    {
+        Player LeftScript = (Player)AJL.GetComponent("Player");
+        LeftScript.LeftPlayerCatch();
+    }
 }

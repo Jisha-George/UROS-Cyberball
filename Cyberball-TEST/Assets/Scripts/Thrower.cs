@@ -6,7 +6,6 @@ public class Thrower : MonoBehaviour {
 
     //create variable
     public GameObject Ball;
-    public GameObject Ball2;
     public GameObject BallHandL;
     public GameObject parent;
     static Animator anim;
@@ -24,12 +23,12 @@ public class Thrower : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        Vector3 BPos = Ball2.transform.position;
-        Vector3 RPos = Ball.transform.position;
-        if (Vector3.Distance(RPos, BPos) <= 83 && Vector3.Distance(RPos, BPos) >= 80 && anim.GetBool("HandThrow"))
-        {
-            anim.SetTrigger("P2T");
-        }
+
+    }
+
+    public void RightPlayerCatch()
+    {
+        anim.SetTrigger("P2T");
     }
 
     //wait random seconds

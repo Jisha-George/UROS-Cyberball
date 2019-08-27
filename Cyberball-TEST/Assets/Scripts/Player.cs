@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     public GameObject Ball;
-    public GameObject Ball2;
     public GameObject BallHandR;
     public GameObject parent;
     static Animator anim;
@@ -20,12 +19,16 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Vector3 BPos = Ball.transform.position;
-        Vector3 RPos = BallHandR.transform.position;
-        if (Vector3.Distance(RPos, BPos) <= 45.8) {
-           // Debug.Log("RPos: " + Vector3.Distance(RPos, BPos));
-            anim.SetTrigger("catch");
-        }
+    }
+
+    public void LeftPlayerCatch()
+    {
+        
+    }
+
+    public void LeftCatch()
+    {
+        anim.SetTrigger("catch");
     }
 
     public void catchMe(){

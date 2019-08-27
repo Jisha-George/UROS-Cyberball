@@ -7,7 +7,6 @@ public class Hand : MonoBehaviour {
     public GameObject parent;
     public GameObject PlayerBall;
     public GameObject Ball;
-    public GameObject Ball2;
     static Animator anim;
 
 	// Use this for initialization
@@ -20,14 +19,7 @@ public class Hand : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //Vector3 BPos = PlayerBall.transform.position;
-        //Vector3 RPos = Ball.transform.position;
-       
-        //if (Vector3.Distance(RPos, BPos) <= 200 && Vector3.Distance(RPos,BPos) >= 199)
-        //{
-        //    Debug.Log("Thrower: " + Vector3.Distance(RPos, BPos));
-        //    anim.SetTrigger("Catching");
-        //}
+
     }
 
     public void CatchBall()
