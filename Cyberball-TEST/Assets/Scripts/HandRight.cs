@@ -32,6 +32,11 @@ public class HandRight : MonoBehaviour {
         anim.SetTrigger("Catching");
     }
 
+    public void CatchBallLeft()
+    {
+        anim.SetTrigger("CatchLeft");
+    }
+
     public void BallThrow()
     {
        if (anim.GetBool("Ball"))
@@ -40,11 +45,13 @@ public class HandRight : MonoBehaviour {
             anim.SetTrigger("Throwing");
        }
     }
+
+    public void BallThrowLeft()
+    {
+        if (anim.GetBool("Ball"))
+        {
+            anim.SetBool("Ball", false);
+            anim.SetTrigger("ThrowLeft");
+        }
+    }
 }
-            //HandBall handball = (HandBall)PlayerBall.GetComponent("HandBall");
-            //handball.PlayerRel();
-            //PlayerBall.SetActive(false);
-            //PlayerBall.transform.parent = null;
-            //movingBall.SetActive(true);
-            //BallScript ballscript = (BallScript)movingBall.GetComponent("BallScript");
-            //ballscript.PlayerRel();

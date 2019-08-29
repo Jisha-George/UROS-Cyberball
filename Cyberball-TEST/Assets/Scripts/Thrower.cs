@@ -17,8 +17,7 @@ public class Thrower : MonoBehaviour {
     void Start () {
         anim = GetComponent<Animator>();
         anim.SetBool("isHoldingBall", true); //initialise as holding ball
-        anim.SetBool("HandThrow", false); //initialise as holding ball
-        rand = Random.Range(2, 3);
+        BallHandL.transform.parent = parent.transform;
     }
 
 	// Update is called once per frame
@@ -26,9 +25,9 @@ public class Thrower : MonoBehaviour {
 
     }
 
-    public void RightPlayerCatch()
+    public void randGen()
     {
-        anim.SetTrigger("P2T");
+        rand = Random.Range(1, 3);
     }
 
     //wait random seconds
@@ -37,6 +36,8 @@ public class Thrower : MonoBehaviour {
         var randomWait = Random.Range(1, 4); //between 1 to 3 seconds
         yield return new WaitForSeconds(randomWait); //call random fucntion
         Debug.Log("Waiting " + randomWait);
+        randGen();
+        Debug.Log("Random " + rand);
 
         if (anim.GetBool("isHoldingBall")) //if holding a ball
         {
@@ -81,12 +82,16 @@ public class Thrower : MonoBehaviour {
         BallHandL.transform.parent = parent.transform;
         Ball.SetActive(false);
         anim.SetBool("isHoldingBall", true);
-        anim.SetBool("HandThrow", false);
         anim.ResetTrigger("P2T");
     }
 
-    public void Press()
+    public void RightPlayerCatch()
     {
-        anim.SetBool("HandThrow", true);
+        anim.SetTrigger("P2T");
+    }
+
+    public void RightCatch()
+    {
+        anim.SetTrigger("isCatching");
     }
 }

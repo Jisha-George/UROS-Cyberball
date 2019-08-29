@@ -26,4 +26,12 @@ public class HandBall : MonoBehaviour {
         anim.SetTrigger("PlayerThrowR");
         Debug.Log("PlayerCatch!");
     }
+
+    public void PlayerRelLeft()
+    {
+        Ball.transform.parent = null;
+        PlayerBall.SetActive(false);
+        anim.SetTrigger("PlayerThrowL");
+        Debug.Log("Player2Catch!");
+    }
 }

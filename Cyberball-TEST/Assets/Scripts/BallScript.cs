@@ -5,7 +5,7 @@ using UnityEngine;
 public class BallScript : MonoBehaviour {
 
     public GameObject BallHandL;
-    public GameObject parentbone;
+    public GameObject BallHandR;
     public GameObject Ball;
     public GameObject HandL;
     public GameObject HandR;
@@ -17,9 +17,7 @@ public class BallScript : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        BallHandL.transform.parent = parentbone.transform;
         anim = GetComponent<Animator>();
-        
     }
 	
 	// Update is called once per frame
@@ -29,7 +27,7 @@ public class BallScript : MonoBehaviour {
 
     public void Rel()
     {
-        anim.SetTrigger("Throwing");
+        anim.SetTrigger("isThrowing");
         Ball.transform.parent = null;
         BallHandL.SetActive(false);
         Ball.SetActive(true);
@@ -45,6 +43,24 @@ public class BallScript : MonoBehaviour {
         Debug.Log("PlayerCatch!");
     }
 
+    public void RelL()
+    {
+        anim.SetTrigger("Throw");
+        Ball.transform.parent = null;
+        BallHandR.SetActive(false);
+        Ball.SetActive(true);
+        Debug.Log("Right");
+    }
+
+    public void RelPlayerL()
+    {
+        Ball.transform.parent = null;
+        BallHandR.SetActive(false);
+        Ball.SetActive(true);
+        anim.SetTrigger("L2P");
+        Debug.Log("PlayerCatch!");
+    }
+
     public void playercatch()
     {
         Hand HandScript = (Hand)HandL.GetComponent("Hand");
@@ -53,15 +69,35 @@ public class BallScript : MonoBehaviour {
         HandRight.CatchBall();
     }
 
-    public void rightcatch()
+    public void playercatchL()
+    {
+        Hand HandScript = (Hand)HandL.GetComponent("Hand");
+        HandScript.CatchBallLeft();
+        HandRight HandRight = (HandRight)HandR.GetComponent("HandRight");
+        HandRight.CatchBallLeft();
+    }
+
+    public void rightplayercatch()
     {
         Thrower RightScript = (Thrower)AJR.GetComponent("Thrower");
         RightScript.RightPlayerCatch();
     }
 
-    public void leftcatch()
+    public void leftplayercatch()
     {
         Player LeftScript = (Player)AJL.GetComponent("Player");
         LeftScript.LeftPlayerCatch();
+    }
+
+    public void leftcatch()
+    {
+        Player LeftScript = (Player)AJL.GetComponent("Player");
+        LeftScript.LeftCatch();
+    }
+
+    public void rightcatch()
+    {
+        Thrower RightScript = (Thrower)AJR.GetComponent("Thrower");
+        RightScript.RightCatch();
     }
 }

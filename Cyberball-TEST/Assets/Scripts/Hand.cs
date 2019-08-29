@@ -27,6 +27,11 @@ public class Hand : MonoBehaviour {
         anim.SetTrigger("Catching");
     }
 
+    public void CatchBallLeft()
+    {
+        anim.SetTrigger("CatchLeft");
+    }
+
     public void BallCatch() {
         PlayerBall.SetActive(true);
         Ball.SetActive(false);
@@ -42,11 +47,28 @@ public class Hand : MonoBehaviour {
        }
     }
 
+    public void BallThrowLeft()
+    {
+        if (anim.GetBool("Ball"))
+        {
+            anim.SetBool("Ball", false);
+            anim.SetTrigger("ThrowLeft");
+        }
+    }
+
     public void ReleaseBall()
     {
         PlayerBall.SetActive(false);
         Ball.SetActive(true);
         HandBall handBall = (HandBall)Ball.GetComponent("HandBall");
         handBall.PlayerRel();
+    }
+
+    public void ReleaseBallLeft()
+    {
+        PlayerBall.SetActive(false);
+        Ball.SetActive(true);
+        HandBall handBall = (HandBall)Ball.GetComponent("HandBall");
+        handBall.PlayerRelLeft();
     }
 }
