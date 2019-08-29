@@ -27,10 +27,10 @@ public class BallScript : MonoBehaviour {
 
     public void Rel()
     {
-        anim.SetTrigger("isThrowing");
+        Ball.SetActive(true);
         Ball.transform.parent = null;
         BallHandL.SetActive(false);
-        Ball.SetActive(true);
+        anim.SetTrigger("isThrowing");
         Debug.Log("poof");
     }
 
@@ -45,10 +45,10 @@ public class BallScript : MonoBehaviour {
 
     public void RelL()
     {
-        anim.SetTrigger("Throw");
+        Ball.SetActive(true);
         Ball.transform.parent = null;
         BallHandR.SetActive(false);
-        Ball.SetActive(true);
+        anim.SetTrigger("Throw");
         Debug.Log("Right");
     }
 

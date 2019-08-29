@@ -28,6 +28,7 @@ public class Thrower : MonoBehaviour {
     public void randGen()
     {
         rand = Random.Range(1, 3);
+       
     }
 
     //wait random seconds
