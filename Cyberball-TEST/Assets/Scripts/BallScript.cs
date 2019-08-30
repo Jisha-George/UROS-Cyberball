@@ -31,7 +31,7 @@ public class BallScript : MonoBehaviour {
         Ball.transform.parent = null;
         BallHandL.SetActive(false);
         anim.SetTrigger("isThrowing");
-        Debug.Log("poof");
+        //Debug.Log("poof");
     }
 
     public void RelPlayer()
@@ -40,7 +40,7 @@ public class BallScript : MonoBehaviour {
         BallHandL.SetActive(false);
         Ball.SetActive(true);
         anim.SetTrigger("T2P");
-        Debug.Log("PlayerCatch!");
+        //Debug.Log("PlayerCatch!");
     }
 
     public void RelL()
@@ -49,7 +49,7 @@ public class BallScript : MonoBehaviour {
         Ball.transform.parent = null;
         BallHandR.SetActive(false);
         anim.SetTrigger("Throw");
-        Debug.Log("Right");
+        //Debug.Log("Right");
     }
 
     public void RelPlayerL()
@@ -58,7 +58,7 @@ public class BallScript : MonoBehaviour {
         BallHandR.SetActive(false);
         Ball.SetActive(true);
         anim.SetTrigger("L2P");
-        Debug.Log("PlayerCatch!");
+        //Debug.Log("PlayerCatch!");
     }
 
     public void playercatch()

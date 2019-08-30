@@ -36,24 +36,24 @@ public class Thrower : MonoBehaviour {
     {
         var randomWait = Random.Range(1, 4); //between 1 to 3 seconds
         yield return new WaitForSeconds(randomWait); //call random fucntion
-        Debug.Log("Waiting " + randomWait);
+        //Debug.Log("Waiting " + randomWait);
         randGen();
-        Debug.Log("Random " + rand);
+        //Debug.Log("Random " + rand);
 
         if (anim.GetBool("isHoldingBall")) //if holding a ball
         {
-            Debug.Log("HoldBall");
+            //Debug.Log("HoldBall");
             
             if (rand == 1) //if random number is 1 throw to AI
             {
                 anim.SetTrigger("isThrowing");
-                Debug.Log("Thrown");
+                //Debug.Log("Thrown");
                 ThrowBall();
             }
             else //if random number is 2 the AI throws to the player
             {
                 anim.SetTrigger("T2P");
-                Debug.Log("PlayerThrow");
+                //Debug.Log("PlayerThrow");
                 ThrowBall();
             }
         }

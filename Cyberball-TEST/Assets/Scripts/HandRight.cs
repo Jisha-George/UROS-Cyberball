@@ -1,17 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HandRight : MonoBehaviour {
 
     public GameObject PlayerBall;
     public GameObject movingBall;
+    public Button Left, Right;
 
     static Animator anim;
 
 	// Use this for initialization
 	void Start () {
         anim = GetComponent<Animator>();
+        //Left = GetComponent<Button>();
+        //Right = GetComponent<Button>();
         PlayerBall.SetActive(false);
         anim.SetBool("Ball", false);
        
@@ -19,12 +23,16 @@ public class HandRight : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-    }
-    
-    public void BallCatch() {
-        movingBall.SetActive(false);
-        anim.SetBool("Ball", true);
+        if (anim.GetBool("Ball"))
+        {
+            Left.interactable = true;
+            Right.interactable = true;
+        }
+        else
+        {
+            Left.interactable = false;
+            Right.interactable = false;
+        }
     }
 
     public void CatchBall()
@@ -37,12 +45,18 @@ public class HandRight : MonoBehaviour {
         anim.SetTrigger("CatchLeft");
     }
 
+    public void BallCatch()
+    {
+        movingBall.SetActive(false);
+        anim.SetBool("Ball", true);
+    }
+
     public void BallThrow()
     {
        if (anim.GetBool("Ball"))
        {
-            anim.SetBool("Ball", false);
             anim.SetTrigger("Throwing");
+            anim.SetBool("Ball", false);
        }
     }
 
@@ -50,8 +64,8 @@ public class HandRight : MonoBehaviour {
     {
         if (anim.GetBool("Ball"))
         {
-            anim.SetBool("Ball", false);
             anim.SetTrigger("ThrowLeft");
+            anim.SetBool("Ball", false);
         }
     }
 }

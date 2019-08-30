@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Hand : MonoBehaviour {
 
     public GameObject parent;
     public GameObject PlayerBall;
     public GameObject Ball;
+    public Button Left, Right;
     static Animator anim;
 
 	// Use this for initialization
@@ -19,7 +21,16 @@ public class Hand : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if (anim.GetBool("Ball"))
+        {
+            Left.interactable = true;
+            Right.interactable = true;
+        }
+        else
+        {
+            Left.interactable = false;
+            Right.interactable = false;
+        }
     }
 
     public void CatchBall()
@@ -40,19 +51,19 @@ public class Hand : MonoBehaviour {
 
     public void BallThrow()
     {
-       if (anim.GetBool("Ball"))
-       {
-            anim.SetBool("Ball", false);
+        if (anim.GetBool("Ball"))
+        {
             anim.SetTrigger("Throwing");
-       }
+            anim.SetBool("Ball", false);
+        }
     }
 
     public void BallThrowLeft()
     {
         if (anim.GetBool("Ball"))
         {
-            anim.SetBool("Ball", false);
             anim.SetTrigger("ThrowLeft");
+            anim.SetBool("Ball", false);
         }
     }
 

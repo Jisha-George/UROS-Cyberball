@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ButtonScript : MonoBehaviour {
-    
+
+
+    void Start()
+    {
+
+    }
     public void PlayB()
     {
         //load play
@@ -30,7 +36,7 @@ public class ButtonScript : MonoBehaviour {
     public void QuitB()
     {
         //quit
-        Debug.Log("Quit!");
+        //Debug.Log("Quit!");
         Application.Quit();
     }
 }

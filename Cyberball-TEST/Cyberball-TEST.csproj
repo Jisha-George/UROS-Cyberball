@@ -74,6 +74,9 @@
     <Reference Include="UnityEngine.VR">
       <HintPath>C:/Program Files/Unity/Hub/Editor/5.6.2f1/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets/Plugins/Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>C:/Program Files/Unity/Hub/Editor/5.6.2f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
@@ -90,12 +93,12 @@
     <Compile Include="Assets\Grass And Flowers Pack 1\Example Scene\SimpleTextureDrawing.cs" />
     <Compile Include="Assets\Scripts\BallScript.cs" />
     <Compile Include="Assets\Scripts\ButtonScript.cs" />
-    <Compile Include="Assets\Scripts\FilePathOpen.cs" />
-    <Compile Include="Assets\Scripts\FilePathSave.cs" />
+    <Compile Include="Assets\Scripts\GameData.cs" />
     <Compile Include="Assets\Scripts\Hand.cs" />
     <Compile Include="Assets\Scripts\HandBall.cs" />
     <Compile Include="Assets\Scripts\HandRight.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\SaveData.cs" />
     <Compile Include="Assets\Scripts\Throw2Player.cs" />
     <Compile Include="Assets\Scripts\Thrower.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\CameraLogic.cs" />
@@ -109,6 +112,7 @@
     <None Include="Assets\Fonts\Adobe Gothic Std 63pt\Adobe Gothic Std 63pt.txt" />
     <None Include="Assets\Fonts\Myr Pro BoldCon 62\Myr Pro BoldCon 62.txt" />
     <None Include="Assets\Grass And Flowers Pack 1\Example Scene\Skyboxes\_skybox info.txt" />
+    <None Include="Assets\Resources\SaveData1.txt" />
     <None Include="Assets\SimpleSky\ReadMe.txt" />
     <None Include="Assets\TreePack1_Free\Read Me.txt" />
   </ItemGroup>
