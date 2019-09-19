@@ -1,35 +1,69 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class JSONWriter : MonoBehaviour {
 
+    public InputField PlayerName;
+    public Dropdown GMD;
+    public Dropdown AgeDrop;
+    public Dropdown GenderDrop;
+    public InputField RoundNum;
+    
+    public int DropdownValA, DropdownValG, DropdownValGM;
+
     string filename = "data.json";
     string path;
-
-    //Data data = new Data();
-    GameData gameData = new GameData();
-
+   
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         path = Application.persistentDataPath + "/" + filename;
         Debug.Log(path);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		//gameData.GetData();
     }
 
-    //public void SaveData()
-    //{
-        
-    //    data.Age = gameData.AgeS;
-    //    data.Gen = gameData.GenS;
-    //    data.GM = gameData.GMS;
-    //    data.R = gameData.RS;
-    //    data.P = gameData.PS;
-    //    string content = JsonUtility.ToJson(data, true);
-    //    System.IO.File.WriteAllText(path, content);
-    //}
+    public void SaveData()
+    {
+        SaveObject saveObject = new SaveObject
+        {
+            Player = PlayerName.text.ToString(),
+            GameMode = GMD.options[DropdownValGM].text.ToString(),
+            Age = AgeDrop.options[DropdownValA].text.ToString(),
+            Gender = GenderDrop.options[DropdownValG].text.ToString(),
+            Rounds = RoundNum.text.ToString(),
+        };
+
+        string content = JsonUtility.ToJson(saveObject);
+        System.IO.File.WriteAllText(path, content);
+
+    }
+    private class SaveObject
+    {
+        public string Player, GameMode, Age, Gender, Rounds;
+    }
+
+    void Update()
+    {   
+        DropdownValA = AgeDrop.value;
+        DropdownValG = GenderDrop.value;
+        DropdownValGM = GMD.value;
+
+        if (Input.GetKeyDown(KeyCode.End))
+        {
+            Debug.Log("AgeDrop: " + AgeDrop.options[DropdownValA].text);
+            Debug.Log("GenderDrop: " + GenderDrop.options[DropdownValG].text);
+            Debug.Log("Gamemode: " + GMD.options[DropdownValGM].text);
+        }
+    }
+
+    public void GetRounds(string rounds)
+    {
+        Debug.Log("RoundNum: " + rounds);
+    }
+
+    public void GetPlayer(string player)
+    {
+       Debug.Log("Name: " + player);
+    }
 }
