@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class JSONWriter : MonoBehaviour {
 
-    public InputField PlayerName;
+   // public InputField PlayerName;
     public Dropdown GMD;
     public Dropdown AgeDrop;
     public Dropdown GenderDrop;
@@ -21,26 +21,27 @@ public class JSONWriter : MonoBehaviour {
     {
         path = Application.persistentDataPath + "/" + filename;
         Debug.Log(path);
+        //C:\Users\Student\AppData\LocalLow\UROS\JSON_TEST
     }
 
     public void SaveData()
     {
         SaveObject saveObject = new SaveObject
         {
-            Player = PlayerName.text.ToString(),
+           // Player = PlayerName.text.ToString(),
             GameMode = GMD.options[DropdownValGM].text.ToString(),
             Age = AgeDrop.options[DropdownValA].text.ToString(),
             Gender = GenderDrop.options[DropdownValG].text.ToString(),
             Rounds = RoundNum.text.ToString(),
         };
 
-        string content = JsonUtility.ToJson(saveObject);
+        string content = JsonUtility.ToJson(saveObject, true);
         System.IO.File.WriteAllText(path, content);
 
     }
     private class SaveObject
     {
-        public string Player, GameMode, Age, Gender, Rounds;
+        public string GameMode, Age, Gender, Rounds;
     }
 
     void Update()
