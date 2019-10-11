@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSON_TEST", "JSON_TEST.csproj", "{67266C6B-D891-4019-1781-09DF43877D43}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSON_TEST", "Assembly-CSharp.csproj", "{81783E3C-D054-70E6-D6BC-5E73534611D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,12 +9,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{67266C6B-D891-4019-1781-09DF43877D43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{67266C6B-D891-4019-1781-09DF43877D43}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{67266C6B-D891-4019-1781-09DF43877D43}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{67266C6B-D891-4019-1781-09DF43877D43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81783E3C-D054-70E6-D6BC-5E73534611D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81783E3C-D054-70E6-D6BC-5E73534611D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81783E3C-D054-70E6-D6BC-5E73534611D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81783E3C-D054-70E6-D6BC-5E73534611D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
