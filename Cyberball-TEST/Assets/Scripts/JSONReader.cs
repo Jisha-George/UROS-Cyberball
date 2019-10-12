@@ -21,7 +21,7 @@ public class JSONData {
 		{
 			//Converts relative path to global path
 			string filePath = Path.Combine(Application.streamingAssetsPath, path);
-
+            Debug.LogError(filePath);
 			//Read in file if exists, and parse to JSONData object
 			if(File.Exists(filePath))
 			{

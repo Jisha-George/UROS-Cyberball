@@ -70,6 +70,13 @@
      <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\SimpleCharacterControl.cs" />
      <Compile Include="Assets\TreePack1_Free\Script\SceneTreePack.cs" />
      <Compile Include="Assets\TreePack1_Free\Script\TreeControll.cs" />
+     <Compile Include="Assets\loadingBar\scripts\Loading.cs" />
+     <Compile Include="Assets\loadingBar\scripts\SimpleLoading.cs" />
+     <Compile Include="Assets\loadingBar\scripts\loadingbar.cs" />
+     <Compile Include="Assets\loadingBar\scripts\loadingcolorful.cs" />
+     <Compile Include="Assets\loadingBar\scripts\loadingtext.cs" />
+     <Compile Include="Assets\loadingBar\scripts\rotatetotate.cs" />
+     <Compile Include="Assets\loadingBar\scripts\simplerotate.cs" />
      <None Include="Assets\TreePack1_Free\Read Me.txt" />
      <None Include="Assets\Resources\SaveData1.txt" />
      <None Include="Assets\SimpleSky\ReadMe.txt" />

@@ -39,6 +39,8 @@ public class JSONWriter : MonoBehaviour {
         string content = JsonUtility.ToJson(saveObject, true);
         System.IO.File.WriteAllText(path, content);
 
+        Debug.Log("Saved!");
+
     }
     private class SaveObject
     {
