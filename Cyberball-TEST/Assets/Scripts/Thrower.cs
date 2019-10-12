@@ -8,13 +8,19 @@ public class Thrower : MonoBehaviour {
     public GameObject Ball;
     public GameObject BallHandL;
     public GameObject parent;
+    public JSONData set;
     static Animator anim;
     float randomWait;
     int rand;
-    
+    public int throws = 0;
+    int round;
 
     // Use this for initialization
     void Start () {
+        string path = "C:/Users/computing/AppData/LocalLow/UROS/Cyberball-TEST/data.json";
+        set = new JSONData(path);
+        round = set.Rounds;
+
         anim = GetComponent<Animator>();
         anim.SetBool("isHoldingBall", true); //initialise as holding ball
         BallHandL.transform.parent = parent.transform;
@@ -40,40 +46,100 @@ public class Thrower : MonoBehaviour {
         randGen();
         //Debug.Log("Random " + rand);
 
-        if (anim.GetBool("isHoldingBall")) //if holding a ball
+        if (set.GameMode == "Inclusive")
         {
-            //Debug.Log("HoldBall");
-            
-            if (rand == 1) //if random number is 1 throw to AI
+            if (anim.GetBool("isHoldingBall")) //if holding a ball
             {
-                anim.SetTrigger("isThrowing");
-                //Debug.Log("Thrown");
-                ThrowBall();
+                //Debug.Log("HoldBall");
+                if (rand == 1) //if random number is 1 throw to AI
+                {
+                    anim.SetTrigger("isThrowing");
+                    //Debug.Log("Thrown");
+                    throws++;
+                    ThrowBall();
+                }
+                else //if random number is 2 the AI throws to the player
+                {
+                    anim.SetTrigger("T2P");
+                    //Debug.Log("PlayerThrow");
+                    throws++;
+                    ThrowBall();
+                }
             }
-            else //if random number is 2 the AI throws to the player
+        }
+        else
+        {
+            if (anim.GetBool("isHoldingBall")) //if holding a ball
             {
-                anim.SetTrigger("T2P");
-                //Debug.Log("PlayerThrow");
-                ThrowBall();
+                if (throws <= (round / 2))
+                {
+                    //Debug.Log("HoldBall");
+                    if (rand == 1) //if random number is 1 throw to AI
+                    {
+                        anim.SetTrigger("isThrowing");
+                        //Debug.Log("Thrown");
+                        throws++;
+                        ThrowBall();
+                    }
+                    else //if random number is 2 the AI throws to the player
+                    {
+                        anim.SetTrigger("T2P");
+                        //Debug.Log("PlayerThrow");
+                        throws++;
+                        ThrowBall();
+                    }
+                }
+                else
+                {
+                    anim.SetTrigger("isThrowing");
+                    //Debug.Log("Thrown");
+                    throws++;
+                    ThrowBall();
+                }
             }
         }
     }
 
     void ThrowBall() {
         anim.SetBool("isHoldingBall", false);
+        Debug.Log(throws);
     }
 
     void ReleaseBall()
     {
-        if (rand == 1)
+        if (set.GameMode == "Inclusive")
         {
-            BallScript ballscript = (BallScript)BallHandL.GetComponent("BallScript");
-            ballscript.Rel();
+            if (rand == 1)
+            {
+                BallScript ballscript = (BallScript)BallHandL.GetComponent("BallScript");
+                ballscript.Rel();
+            }
+            else
+            {
+                BallScript ballscript = (BallScript)BallHandL.GetComponent("BallScript");
+                ballscript.RelPlayer();
+            }
         }
         else
         {
-            BallScript ballscript = (BallScript)BallHandL.GetComponent("BallScript");
-            ballscript.RelPlayer();
+            if (throws <= (round / 2))
+            {
+                if (rand == 1)
+                {
+                    BallScript ballscript = (BallScript)BallHandL.GetComponent("BallScript");
+                    ballscript.Rel();
+                }
+                else
+                {
+                    BallScript ballscript = (BallScript)BallHandL.GetComponent("BallScript");
+                    ballscript.RelPlayer();
+                }
+            }
+            else
+            {
+                BallScript ballscript = (BallScript)BallHandL.GetComponent("BallScript");
+                ballscript.Rel();
+            }
         }
     }
 
