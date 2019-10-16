@@ -13,19 +13,11 @@ public class Player : MonoBehaviour {
     static Animator anim;
    
     int rand;
-    int throws;
-    int round;
-    int tUpdate = 0;
-
 
     // Use this for initialization
     void Start () {
         string path = "C:/Users/computing/AppData/LocalLow/UROS/Cyberball-TEST/data.json";
         set = new JSONData(path);
-        round = set.Rounds;
-
-        Sharer share = Ball.GetComponent<Sharer>();
-        tUpdate = share.throws;
 
         anim = GetComponent<Animator>();
         anim.SetBool("isHoldingBall", false);
@@ -35,8 +27,13 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        
+    }
+
+    public void Updater()
+    {
         Sharer share = Ball.GetComponent<Sharer>();
-        share.throws = tUpdate;
+        share.throws++;
     }
 
     public void randGen()
@@ -46,31 +43,26 @@ public class Player : MonoBehaviour {
 
     IEnumerator WaitSeconds()
     {
+        Sharer share = Ball.GetComponent<Sharer>();
         var randomWait = Random.Range(1, 4); //between 1 to 3 seconds
-        if (tUpdate < round)
+        if (share.throws < set.Rounds)
         {
             yield return new WaitForSeconds(randomWait); //call random fucntion
-            //Debug.Log("Waiting " + randomWait);
             randGen();
-            //Debug.Log("Random " + rand);
+           Debug.Log("LRandom " + rand);
 
             if (set.GameMode == "Inclusive")
             {
                 if (anim.GetBool("isHoldingBall")) //if holding a ball
                 {
-                    //Debug.Log("HoldBall");
                     if (rand == 1) //if random number is 1 throw to AI
                     {
                         anim.SetTrigger("isThrowing");
-                        //Debug.Log("Thrown");
-                        throws++;
                         ThrowBall();
                     }
                     else //if random number is 2 the AI throws to the player
                     {
                         anim.SetTrigger("L2P");
-                        //Debug.Log("PlayerThrow");
-                        throws++;
                         ThrowBall();
                     }
                 }
@@ -79,29 +71,25 @@ public class Player : MonoBehaviour {
             {
                 if (anim.GetBool("isHoldingBall")) //if holding a ball
                 {
-                    if (throws <= round / 2)
+                    Debug.Log("Share" + share.throws);
+                    if (share.throws <= (set.Rounds / 2))
                     {
-                        //Debug.Log("HoldBall");
+                       
                         if (rand == 1) //if random number is 1 throw to AI
                         {
                             anim.SetTrigger("isThrowing");
-                            //Debug.Log("Thrown");
-                            throws++;
                             ThrowBall();
                         }
                         else //if random number is 2 the AI throws to the player
                         {
+                            
                             anim.SetTrigger("L2P");
-                            //Debug.Log("PlayerThrow");
-                            throws++;
                             ThrowBall();
                         }
                     }
                     else
                     {
                         anim.SetTrigger("isThrowing");
-                        //Debug.Log("Thrown");
-                        throws++;
                         ThrowBall();
                     }
                 }
@@ -109,7 +97,7 @@ public class Player : MonoBehaviour {
         }
         else
         {
-            popUp.SetActive(true);
+            share.popUp.SetActive(true);
             //SceneManager.LoadScene("Thank You");
         }
     }
@@ -121,40 +109,48 @@ public class Player : MonoBehaviour {
 
     void ReleaseBall()
     {
+        Sharer share = Ball.GetComponent<Sharer>();
         if (set.GameMode == "Inclusive")
         {
             if (rand == 1)
             {
                 BallScript ballscript = (BallScript)BallHandR.GetComponent("BallScript");
                 ballscript.RelL();
+                Updater();
             }
             else
             {
                 BallScript ballscript = (BallScript)BallHandR.GetComponent("BallScript");
                 ballscript.RelPlayerL();
+                Updater();
             }
         }
         else
         {
-            if (throws <= (round / 2))
+            if (share.throws <= (set.Rounds / 2))
             {
                 if (rand == 1)
                 {
                     BallScript ballscript = (BallScript)BallHandR.GetComponent("BallScript");
                     ballscript.RelL();
+                    Updater();
                 }
                 else
                 {
+                    Debug.Log("HoldBall");
                     BallScript ballscript = (BallScript)BallHandR.GetComponent("BallScript");
                     ballscript.RelPlayerL();
+                    Updater();
                 }
             }
             else
             {
                 BallScript ballscript = (BallScript)BallHandR.GetComponent("BallScript");
                 ballscript.RelL();
+                Updater();
             }
         }
+        Debug.Log(share.throws);
     }
 
     public void LeftPlayerCatch()
@@ -168,9 +164,9 @@ public class Player : MonoBehaviour {
     }
 
     public void catchMe(){
-        BallHandR.SetActive(true);
-        BallHandR.transform.parent = parent.transform;
         Ball.SetActive(false);
+        BallHandR.transform.parent = parent.transform;
+        BallHandR.SetActive(true);
         anim.SetBool("isHoldingBall", true);
         anim.ResetTrigger("P2L");
     }

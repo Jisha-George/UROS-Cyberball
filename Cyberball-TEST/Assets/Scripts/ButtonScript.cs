@@ -47,6 +47,12 @@ public class ButtonScript : MonoBehaviour {
         SceneManager.LoadScene("Loading");
     }
 
+    public void FinB()
+    {
+        popup.SetActive(false);
+        SceneManager.LoadScene("Loading");
+    }
+
     public void QuitB()
     {
         //quit

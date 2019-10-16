@@ -27,36 +27,36 @@ public class BallScript : MonoBehaviour {
 
     public void Rel()
     {
-        Ball.SetActive(true);
-        Ball.transform.parent = null;
         BallHandL.SetActive(false);
+        Ball.SetActive(true);
+        //Ball.transform.parent = null;
         anim.SetTrigger("isThrowing");
         //Debug.Log("poof");
     }
 
     public void RelPlayer()
     {
-        Ball.transform.parent = null;
         BallHandL.SetActive(false);
         Ball.SetActive(true);
+        //Ball.transform.parent = null;
         anim.SetTrigger("T2P");
         //Debug.Log("PlayerCatch!");
     }
 
     public void RelL()
     {
-        Ball.SetActive(true);
-        Ball.transform.parent = null;
         BallHandR.SetActive(false);
+        Ball.SetActive(true);
+       // Ball.transform.parent = null;
         anim.SetTrigger("Throw");
         //Debug.Log("Right");
     }
 
     public void RelPlayerL()
     {
-        Ball.transform.parent = null;
         BallHandR.SetActive(false);
         Ball.SetActive(true);
+       // Ball.transform.parent = null;
         anim.SetTrigger("L2P");
         //Debug.Log("PlayerCatch!");
     }

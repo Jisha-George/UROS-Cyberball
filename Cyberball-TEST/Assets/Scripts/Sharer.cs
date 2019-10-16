@@ -7,13 +7,4 @@ public class Sharer : MonoBehaviour {
     public int throws;
     public GameObject popUp;
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

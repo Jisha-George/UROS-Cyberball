@@ -8,11 +8,15 @@ public class Hand : MonoBehaviour {
     public GameObject parent;
     public GameObject PlayerBall;
     public GameObject Ball;
+    public JSONData set;
     public Button Left, Right;
     static Animator anim;
 
 	// Use this for initialization
 	void Start () {
+        string path = "C:/Users/computing/AppData/LocalLow/UROS/Cyberball-TEST/data.json";
+        set = new JSONData(path);
+
         anim = GetComponent<Animator>();
         PlayerBall.SetActive(false);
         PlayerBall.transform.parent = parent.transform;
@@ -31,6 +35,12 @@ public class Hand : MonoBehaviour {
             Left.interactable = false;
             Right.interactable = false;
         }
+        
+    }
+    public void Updater()
+    {
+        Sharer share = Ball.GetComponent<Sharer>();
+        share.throws++;
     }
 
     public void CatchBall()
@@ -44,9 +54,14 @@ public class Hand : MonoBehaviour {
     }
 
     public void BallCatch() {
-        PlayerBall.SetActive(true);
         Ball.SetActive(false);
+        PlayerBall.SetActive(true);
         anim.SetBool("Ball", true);
+        Sharer share = Ball.GetComponent<Sharer>();
+        if (share.throws == set.Rounds)
+        {
+            share.popUp.SetActive(true);
+        }
     }
 
     public void BallThrow()
@@ -55,6 +70,7 @@ public class Hand : MonoBehaviour {
         {
             anim.SetTrigger("Throwing");
             anim.SetBool("Ball", false);
+            Updater();
         }
     }
 
@@ -64,6 +80,7 @@ public class Hand : MonoBehaviour {
         {
             anim.SetTrigger("ThrowLeft");
             anim.SetBool("Ball", false);
+            Updater();
         }
     }
 

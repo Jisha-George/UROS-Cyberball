@@ -14,8 +14,6 @@ public class HandRight : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         anim = GetComponent<Animator>();
-        //Left = GetComponent<Button>();
-        //Right = GetComponent<Button>();
         PlayerBall.SetActive(false);
         anim.SetBool("Ball", false);
        
