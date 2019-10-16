@@ -23,11 +23,12 @@ public class Player : MonoBehaviour {
         anim.SetBool("isHoldingBall", false);
         BallHandR.SetActive(false);
         BallHandR.transform.parent = parent.transform;
+        
     }
 	
 	// Update is called once per frame
 	void Update () {
-        
+        Ball.transform.parent = null;
     }
 
     public void Updater()

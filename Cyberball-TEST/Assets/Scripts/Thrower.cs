@@ -26,11 +26,12 @@ public class Thrower : MonoBehaviour {
         anim = GetComponent<Animator>();
         anim.SetBool("isHoldingBall", true); //initialise as holding ball
         BallHandL.transform.parent = parent.transform;
+        
     }
 
 	// Update is called once per frame
 	void Update () {
-
+            Ball.transform.parent = null;
     }
 
     public void Updater()
