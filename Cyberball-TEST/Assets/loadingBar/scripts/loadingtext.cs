@@ -23,17 +23,19 @@ public class loadingtext : MonoBehaviour {
         imageComp = rectComponent.GetComponent<Image>();
         imageComp.fillAmount = 0.0f;
 
+        randGen();
+
         if (rand == 2)
         {
-            speed = 100;
+            speed = 0.1f;
         }
         else if (rand == 3)
         {
-            speed = 50;
+            speed = 0.25f;
         }
         else
         {
-            speed = 25;
+            speed = 0.5f;
         }
     }
 	
@@ -44,9 +46,18 @@ public class loadingtext : MonoBehaviour {
         {
             imageComp.fillAmount = imageComp.fillAmount + Time.deltaTime * speed;
             a = (int)(imageComp.fillAmount * 100);
-            if (a > 0 && a <= 75)
+
+            if (a > 0 && a <= 25)
             {
-                textNormal.text = "Loading...";
+                textNormal.text = "Connecting...";
+            }
+            else if (a > 25 && a <= 50)
+            {
+                textNormal.text = "Finding Players...";
+            }
+            else if (a > 50 && a <= 75)
+            {
+                textNormal.text = "Players Found...";
             }
             else if (a > 75 && a <= 99)
             {
@@ -80,5 +91,4 @@ public class loadingtext : MonoBehaviour {
     {
         rand = Random.Range(2, 5);
     }
-
 }

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Thrower : MonoBehaviour {
 
@@ -8,11 +10,12 @@ public class Thrower : MonoBehaviour {
     public GameObject Ball;
     public GameObject BallHandL;
     public GameObject parent;
+    public GameObject quit;
     public JSONData set;
     static Animator anim;
-    float randomWait;
+
     int rand;
-    public int throws = 0;
+    int tUpdate = 0;
     int round;
 
     // Use this for initialization
@@ -21,6 +24,10 @@ public class Thrower : MonoBehaviour {
         set = new JSONData(path);
         round = set.Rounds;
 
+        Sharer share = Ball.GetComponent<Sharer>();
+        tUpdate = share.throws;
+        Debug.Log(round);
+
         anim = GetComponent<Animator>();
         anim.SetBool("isHoldingBall", true); //initialise as holding ball
         BallHandL.transform.parent = parent.transform;
@@ -28,81 +35,89 @@ public class Thrower : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
+        Sharer share = Ball.GetComponent<Sharer>();
+        share.throws = tUpdate;
     }
 
     public void randGen()
     {
         rand = Random.Range(1, 3);
-       
     }
 
     //wait random seconds
     IEnumerator WaitSeconds()
     {
         var randomWait = Random.Range(1, 4); //between 1 to 3 seconds
-        yield return new WaitForSeconds(randomWait); //call random fucntion
-        //Debug.Log("Waiting " + randomWait);
-        randGen();
-        //Debug.Log("Random " + rand);
 
-        if (set.GameMode == "Inclusive")
+        if (tUpdate < round)
         {
-            if (anim.GetBool("isHoldingBall")) //if holding a ball
+            yield return new WaitForSeconds(randomWait); //call random fucntion
+            //Debug.Log("Waiting " + randomWait);
+            randGen();
+            Debug.Log("Random " + rand);
+            if (set.GameMode == "Inclusive")
             {
-                //Debug.Log("HoldBall");
-                if (rand == 1) //if random number is 1 throw to AI
+                if (anim.GetBool("isHoldingBall")) //if holding a ball
                 {
-                    anim.SetTrigger("isThrowing");
-                    //Debug.Log("Thrown");
-                    throws++;
-                    ThrowBall();
+                    //Debug.Log("HoldBall");
+                    if (rand == 1) //if random number is 1 throw to AI
+                    {
+                        tUpdate++;
+                        anim.SetTrigger("isThrowing");
+                        //Debug.Log("Thrown");
+                        ThrowBall();
+                    }
+                    else //if random number is 2 the AI throws to the player
+                    {
+                        tUpdate++;
+                        anim.SetTrigger("T2P");
+                        //Debug.Log("PlayerThrow");
+                        ThrowBall();
+                    }
                 }
-                else //if random number is 2 the AI throws to the player
+            }
+            else
+            {
+                if (anim.GetBool("isHoldingBall")) //if holding a ball
                 {
-                    anim.SetTrigger("T2P");
-                    //Debug.Log("PlayerThrow");
-                    throws++;
-                    ThrowBall();
+                    if (tUpdate <= (round / 2))
+                    {
+                        //Debug.Log("HoldBall");
+                        if (rand == 1) //if random number is 1 throw to AI
+                        {
+                            tUpdate++;
+                            anim.SetTrigger("isThrowing");
+                            //Debug.Log("Thrown");
+                            ThrowBall();
+                        }
+                        else //if random number is 2 the AI throws to the player
+                        {
+                            tUpdate++;
+                            anim.SetTrigger("T2P");
+                            //Debug.Log("PlayerThrow");  
+                            ThrowBall();
+                        }
+                    }
+                    else
+                    {
+                        tUpdate++;
+                        anim.SetTrigger("isThrowing");
+                        //Debug.Log("Thrown");
+                        ThrowBall();
+                    }
                 }
             }
         }
         else
         {
-            if (anim.GetBool("isHoldingBall")) //if holding a ball
-            {
-                if (throws <= (round / 2))
-                {
-                    //Debug.Log("HoldBall");
-                    if (rand == 1) //if random number is 1 throw to AI
-                    {
-                        anim.SetTrigger("isThrowing");
-                        //Debug.Log("Thrown");
-                        throws++;
-                        ThrowBall();
-                    }
-                    else //if random number is 2 the AI throws to the player
-                    {
-                        anim.SetTrigger("T2P");
-                        //Debug.Log("PlayerThrow");
-                        throws++;
-                        ThrowBall();
-                    }
-                }
-                else
-                {
-                    anim.SetTrigger("isThrowing");
-                    //Debug.Log("Thrown");
-                    throws++;
-                    ThrowBall();
-                }
-            }
+            quit.SetActive(true);
+            //SceneManager.LoadScene("Thank You");
         }
     }
 
     void ThrowBall() {
         anim.SetBool("isHoldingBall", false);
-        Debug.Log(throws);
+        Debug.Log(tUpdate);
     }
 
     void ReleaseBall()
@@ -122,7 +137,7 @@ public class Thrower : MonoBehaviour {
         }
         else
         {
-            if (throws <= (round / 2))
+            if (tUpdate <= (round / 2))
             {
                 if (rand == 1)
                 {
