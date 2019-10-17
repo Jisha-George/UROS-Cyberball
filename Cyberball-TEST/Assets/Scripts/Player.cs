@@ -6,8 +6,8 @@ public class Player : MonoBehaviour {
 
     public GameObject Ball;
     public GameObject BallHandR;
-    public GameObject parent;
-    
+    public GameObject parentA;
+    public GameObject parentP;
 
     public JSONData set;
     static Animator anim;
@@ -22,8 +22,8 @@ public class Player : MonoBehaviour {
         anim = GetComponent<Animator>();
         anim.SetBool("isHoldingBall", false);
         BallHandR.SetActive(false);
-        BallHandR.transform.parent = parent.transform;
-        
+        BallHandR.transform.parent = parentA.transform;
+        BallHandR.transform.parent = parentP.transform;
     }
 	
 	// Update is called once per frame
@@ -166,7 +166,8 @@ public class Player : MonoBehaviour {
 
     public void catchMe(){
         Ball.SetActive(false);
-        BallHandR.transform.parent = parent.transform;
+        BallHandR.transform.parent = parentA.transform;
+        BallHandR.transform.parent = parentP.transform;
         BallHandR.SetActive(true);
         anim.SetBool("isHoldingBall", true);
         anim.ResetTrigger("P2L");

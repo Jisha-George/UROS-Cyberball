@@ -9,7 +9,8 @@ public class Thrower : MonoBehaviour {
     //create variable
     public GameObject Ball;
     public GameObject BallHandL;
-    public GameObject parent;
+    public GameObject parentA;
+    public GameObject parentP;
 
     public JSONData set;
     static Animator anim;
@@ -25,8 +26,8 @@ public class Thrower : MonoBehaviour {
 
         anim = GetComponent<Animator>();
         anim.SetBool("isHoldingBall", true); //initialise as holding ball
-        BallHandL.transform.parent = parent.transform;
-        
+        BallHandL.transform.parent = parentA.transform;
+        BallHandL.transform.parent = parentP.transform;
     }
 
 	// Update is called once per frame
@@ -167,7 +168,8 @@ public class Thrower : MonoBehaviour {
     public void catchMe()
     {
         Ball.SetActive(false);
-        BallHandL.transform.parent = parent.transform;
+        BallHandL.transform.parent = parentA.transform;
+        BallHandL.transform.parent = parentP.transform;
         BallHandL.SetActive(true);
         anim.SetBool("isHoldingBall", true);
         anim.ResetTrigger("P2T");
