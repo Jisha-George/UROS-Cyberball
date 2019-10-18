@@ -22,8 +22,18 @@ public class Player : MonoBehaviour {
         anim = GetComponent<Animator>();
         anim.SetBool("isHoldingBall", false);
         BallHandR.SetActive(false);
-        BallHandR.transform.parent = parentA.transform;
-        BallHandR.transform.parent = parentP.transform;
+
+
+        if (set.Gender == "Only Boys")
+        {
+            Debug.Log(set.Gender);
+            BallHandR.transform.parent = parentA.transform;
+        }
+        else
+        {
+            
+            BallHandR.transform.parent = parentP.transform;
+        }
     }
 	
 	// Update is called once per frame
@@ -166,10 +176,18 @@ public class Player : MonoBehaviour {
 
     public void catchMe(){
         Ball.SetActive(false);
-        BallHandR.transform.parent = parentA.transform;
-        BallHandR.transform.parent = parentP.transform;
+        Ball.transform.parent = null;
+        if (set.Gender == "Only Boys")
+        {
+            Debug.Log(set.Gender);
+            BallHandR.transform.parent = parentA.transform;
+        }
+        else
+        {
+
+            BallHandR.transform.parent = parentP.transform;
+        }
         BallHandR.SetActive(true);
         anim.SetBool("isHoldingBall", true);
-        anim.ResetTrigger("P2L");
     }
 }

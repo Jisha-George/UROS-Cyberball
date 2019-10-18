@@ -26,8 +26,16 @@ public class Thrower : MonoBehaviour {
 
         anim = GetComponent<Animator>();
         anim.SetBool("isHoldingBall", true); //initialise as holding ball
-        BallHandL.transform.parent = parentA.transform;
-        BallHandL.transform.parent = parentP.transform;
+
+        if (set.Gender == "Only Girls")
+        {
+            BallHandL.transform.parent = parentP.transform;
+        }
+        else
+        {
+            BallHandL.transform.parent = parentA.transform;
+        }
+        
     }
 
 	// Update is called once per frame
@@ -52,6 +60,8 @@ public class Thrower : MonoBehaviour {
         {
             rand = 1;
         }
+
+        Debug.Log(rand);
     }
 
     //wait random seconds
@@ -168,11 +178,17 @@ public class Thrower : MonoBehaviour {
     public void catchMe()
     {
         Ball.SetActive(false);
-        BallHandL.transform.parent = parentA.transform;
-        BallHandL.transform.parent = parentP.transform;
+        Ball.transform.parent = null;
+        if (set.Gender == "Only Girls")
+        {
+            BallHandL.transform.parent = parentP.transform;
+        }
+        else
+        {
+            BallHandL.transform.parent = parentA.transform;
+        }
         BallHandL.SetActive(true);
         anim.SetBool("isHoldingBall", true);
-        anim.ResetTrigger("P2T");
     }
 
     public void RightPlayerCatch()

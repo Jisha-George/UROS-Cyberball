@@ -8,6 +8,7 @@ using System.IO;
 public class ButtonScript : MonoBehaviour {
 
     public GameObject popup;
+    public JSONData set;
 
     void Start()
     {
@@ -15,26 +16,14 @@ public class ButtonScript : MonoBehaviour {
     }
     public void PlayB()
     {
-        string path = "C:/Users/computing/AppData/LocalLow/UROS/Cyberball-TEST/data.json";
-        string filePath = Path.Combine(Application.streamingAssetsPath, path);
-
-        if (File.Exists(filePath))
-        {
-            //if file exist
-            //load play
-            SceneManager.LoadScene("Play");
-        }
-        else
-        {
-            //if file not exist
-            popup.SetActive(true);
-        }
+        
+        SceneManager.LoadScene("Settings");
     }    
 
     public void SettingsB()
     {
         //load settings
-        SceneManager.LoadScene("Settings");
+        
     }
 
     public void BackB()
@@ -57,6 +46,9 @@ public class ButtonScript : MonoBehaviour {
     {
         //quit
         //Debug.Log("Quit!");
+        string path = "C:/Users/computing/AppData/LocalLow/UROS/Cyberball-TEST/data.json";
+        set = new JSONData(path);
+        new DataSaver(set.GameMode, set.Age, set.Gender, set.Rounds.ToString(), "", "");
         Application.Quit();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -23,6 +24,18 @@ public class JSONWriter : MonoBehaviour {
         path = Application.persistentDataPath + "/" + filename;
         Debug.Log(path);
         //C:\Users\Student\AppData\LocalLow\UROS\JSON_TEST
+
+        if (File.Exists(path))
+        {
+            JSONData data = new JSONData(path);
+            //GMD.value = GMD.options.FindIndex(option = > options.text == data.GameMode);
+           
+            GMD.value = GMD.options.FindIndex((I) => { return I.text.Equals(data.GameMode); });
+            AgeDrop.value = AgeDrop.options.FindIndex((I) => { return I.text.Equals(data.Age); });
+            GenderDrop.value = GenderDrop.options.FindIndex((I) => { return I.text.Equals(data.Gender); });
+            RoundNum.text = data.Rounds.ToString();
+        }
+
     }
 
     public void SaveData()
@@ -40,6 +53,8 @@ public class JSONWriter : MonoBehaviour {
         System.IO.File.WriteAllText(path, content);
 
         Debug.Log("Saved!");
+
+        SceneManager.LoadScene("Play");
 
     }
     private class SaveObject

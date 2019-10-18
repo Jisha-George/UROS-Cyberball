@@ -19,7 +19,7 @@ public class BallScript : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        anim = GetComponent<Animator>();
+        anim = Ball.GetComponent<Animator>();
     }
 	
 	// Update is called once per frame

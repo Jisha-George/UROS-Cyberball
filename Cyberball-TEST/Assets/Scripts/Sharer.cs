@@ -15,7 +15,7 @@ public class Sharer : MonoBehaviour {
     public void Start()
     {
         string path = "C:/Users/computing/AppData/LocalLow/UROS/Cyberball-TEST/data.json";
-       set = new JSONData(path);
+        set = new JSONData(path);
 
         if (set.Gender == "Only Girls")
         {
