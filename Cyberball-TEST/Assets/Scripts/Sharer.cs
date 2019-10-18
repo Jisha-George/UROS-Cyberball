@@ -10,7 +10,10 @@ public class Sharer : MonoBehaviour {
     public GameObject AJR;
     public GameObject PL;
     public GameObject PR;
+
     public JSONData set;
+
+    public string VER, AER, DER;
 
     public void Start()
     {
