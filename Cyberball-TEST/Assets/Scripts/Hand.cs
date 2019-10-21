@@ -14,7 +14,7 @@ public class Hand : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        string path = "C:/Users/computing/AppData/LocalLow/UROS/Cyberball-TEST/data.json";
+        string path = (Application.streamingAssetsPath + "/data.json");
         set = new JSONData(path);
 
         anim = GetComponent<Animator>();

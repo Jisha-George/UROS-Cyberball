@@ -13,7 +13,7 @@ public class JSONWriter : MonoBehaviour {
     public Dropdown GenderDrop;
     public InputField RoundNum;
     
-    public int DropdownValA, DropdownValG, DropdownValGM;
+    private int DropdownValA, DropdownValG, DropdownValGM, rand;
 
     string filename = "data.json";
     string path;
@@ -21,7 +21,7 @@ public class JSONWriter : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        path = Application.persistentDataPath + "/" + filename;
+        path = Application.streamingAssetsPath + "/" + filename;
         Debug.Log(path);
         //C:\Users\Student\AppData\LocalLow\UROS\JSON_TEST
 
@@ -29,7 +29,9 @@ public class JSONWriter : MonoBehaviour {
         {
             JSONData data = new JSONData(path);
             //GMD.value = GMD.options.FindIndex(option = > options.text == data.GameMode);
-           
+            if (data.GameMode.StartsWith("Random"))
+                data.GameMode = "Random";
+
             GMD.value = GMD.options.FindIndex((I) => { return I.text.Equals(data.GameMode); });
             AgeDrop.value = AgeDrop.options.FindIndex((I) => { return I.text.Equals(data.Age); });
             GenderDrop.value = GenderDrop.options.FindIndex((I) => { return I.text.Equals(data.Gender); });
@@ -43,7 +45,7 @@ public class JSONWriter : MonoBehaviour {
         SaveObject saveObject = new SaveObject
         {
            // Player = PlayerName.text.ToString(),
-            GameMode = GMD.options[DropdownValGM].text.ToString(),
+            GameMode = randGen(GMD.options[DropdownValGM].text.ToString()),
             Age = AgeDrop.options[DropdownValA].text.ToString(),
             Gender = GenderDrop.options[DropdownValG].text.ToString(),
             Rounds = RoundNum.text.ToString(),
@@ -52,7 +54,7 @@ public class JSONWriter : MonoBehaviour {
         string content = JsonUtility.ToJson(saveObject, true);
         System.IO.File.WriteAllText(path, content);
 
-        Debug.Log("Saved!");
+        //Debug.Log("Saved!");
 
         SceneManager.LoadScene("Play");
 
@@ -60,6 +62,24 @@ public class JSONWriter : MonoBehaviour {
     private class SaveObject
     {
         public string GameMode, Age, Gender, Rounds;
+    }
+
+    public string randGen(string GameMode)
+    {
+
+        if (GameMode == "Random")
+        {
+            if (Random.Range(1, 3) == 1)
+            {
+                GameMode = "Random Inclusive";
+            }
+            else
+            {
+                GameMode = "Random Exclusive";
+            }
+        }
+        Debug.Log(GameMode);
+        return GameMode;
     }
 
     void Update()

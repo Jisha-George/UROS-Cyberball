@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\Sharer.cs" />
      <Compile Include="Assets\Scripts\Throw2Player.cs" />
      <Compile Include="Assets\Scripts\Thrower.cs" />
+     <Compile Include="Assets\Scripts\loadingtext.cs" />
      <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\CameraLogic.cs" />
      <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\Demo.cs" />
      <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\SimpleCharacterControl.cs" />
@@ -75,7 +76,6 @@
      <Compile Include="Assets\loadingBar\scripts\Loading.cs" />
      <Compile Include="Assets\loadingBar\scripts\loadingbar.cs" />
      <Compile Include="Assets\loadingBar\scripts\loadingcolorful.cs" />
-     <Compile Include="Assets\loadingBar\scripts\loadingtext.cs" />
      <None Include="Assets\TreePack1_Free\Read Me.txt" />
      <None Include="Assets\Resources\SaveData1.txt" />
      <None Include="Assets\SimpleSky\ReadMe.txt" />

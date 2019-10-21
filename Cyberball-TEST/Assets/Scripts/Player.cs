@@ -8,6 +8,8 @@ public class Player : MonoBehaviour {
     public GameObject BallHandR;
     public GameObject parentA;
     public GameObject parentP;
+    public GameObject AJL;
+    public GameObject PL;
 
     public JSONData set;
     static Animator anim;
@@ -16,22 +18,29 @@ public class Player : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        string path = "C:/Users/computing/AppData/LocalLow/UROS/Cyberball-TEST/data.json";
+        string path = (Application.streamingAssetsPath + "/data.json");
         set = new JSONData(path);
 
-        anim = GetComponent<Animator>();
+        if (set.Gender == "Only Boys")
+        {
+            anim = AJL.GetComponent<Animator>();
+        }
+        else
+        {
+            anim = PL.GetComponent<Animator>();
+        }
+
         anim.SetBool("isHoldingBall", false);
         BallHandR.SetActive(false);
 
 
         if (set.Gender == "Only Boys")
         {
-            Debug.Log(set.Gender);
+            //Debug.Log(set.Gender);
             BallHandR.transform.parent = parentA.transform;
         }
         else
         {
-            
             BallHandR.transform.parent = parentP.transform;
         }
     }
@@ -60,9 +69,9 @@ public class Player : MonoBehaviour {
         {
             yield return new WaitForSeconds(randomWait); //call random fucntion
             randGen();
-           Debug.Log("LRandom " + rand);
+          // Debug.Log("LRandom " + rand);
 
-            if (set.GameMode == "Inclusive")
+            if (set.GameMode == "Inclusive" || set.GameMode == "Random Inclusive")
             {
                 if (anim.GetBool("isHoldingBall")) //if holding a ball
                 {
@@ -82,7 +91,7 @@ public class Player : MonoBehaviour {
             {
                 if (anim.GetBool("isHoldingBall")) //if holding a ball
                 {
-                    Debug.Log("Share" + share.throws);
+                   // Debug.Log("Share" + share.throws);
                     if (share.throws <= (set.Rounds / 2))
                     {
                        
@@ -121,7 +130,7 @@ public class Player : MonoBehaviour {
     void ReleaseBall()
     {
         Sharer share = Ball.GetComponent<Sharer>();
-        if (set.GameMode == "Inclusive")
+        if (set.GameMode == "Inclusive" || set.GameMode == "Random Inclusive")
         {
             if (rand == 1)
             {
@@ -161,7 +170,7 @@ public class Player : MonoBehaviour {
                 Updater();
             }
         }
-        Debug.Log(share.throws);
+//        Debug.Log(share.throws);
     }
 
     public void LeftPlayerCatch()
@@ -179,7 +188,7 @@ public class Player : MonoBehaviour {
         Ball.transform.parent = null;
         if (set.Gender == "Only Boys")
         {
-            Debug.Log(set.Gender);
+            //Debug.Log(set.Gender);
             BallHandR.transform.parent = parentA.transform;
         }
         else

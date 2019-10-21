@@ -11,6 +11,8 @@ public class Thrower : MonoBehaviour {
     public GameObject BallHandL;
     public GameObject parentA;
     public GameObject parentP;
+    public GameObject AJR;
+    public GameObject PR;
 
     public JSONData set;
     static Animator anim;
@@ -19,12 +21,20 @@ public class Thrower : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        string path = "C:/Users/computing/AppData/LocalLow/UROS/Cyberball-TEST/data.json";
+        string path = (Application.streamingAssetsPath + "/data.json");
         set = new JSONData(path);
 
-        Debug.Log(set.Rounds);
+        //Debug.Log(set.Rounds);
 
-        anim = GetComponent<Animator>();
+        if (set.Gender == "Only Girls")
+        {
+            anim = PR.GetComponent<Animator>();
+        }
+        else
+        {
+            anim = AJR.GetComponent<Animator>();
+        }
+
         anim.SetBool("isHoldingBall", true); //initialise as holding ball
 
         if (set.Gender == "Only Girls")
@@ -34,8 +44,25 @@ public class Thrower : MonoBehaviour {
         else
         {
             BallHandL.transform.parent = parentA.transform;
+            Debug.Log(BallHandL.transform.localScale);
+            BallHandL.transform.localScale = new Vector3(0.3f,0.3f,0.3f);
+            BallHandL.transform.rotation = new Quaternion(0,0,0,0);
         }
         
+        if (set.GameMode == "Random")
+        {
+            randGen(); 
+
+            if(rand == 1)
+            {
+                set.GameMode = "Random Inclusive";
+            }
+            else
+            {
+                set.GameMode = "Random Exclusive";
+            }
+        }
+
     }
 
 	// Update is called once per frame
@@ -74,8 +101,8 @@ public class Thrower : MonoBehaviour {
         {
             yield return new WaitForSeconds(randomWait); //call random fucntion
             randGen();
-            Debug.Log("Random " + rand);
-            if (set.GameMode == "Inclusive")
+            //Debug.Log("Random " + rand);
+            if (set.GameMode == "Inclusive" || set.GameMode == "Random Inclusive")
             {
                 if (anim.GetBool("isHoldingBall")) //if holding a ball
                 {
@@ -96,10 +123,10 @@ public class Thrower : MonoBehaviour {
             {
                 if (anim.GetBool("isHoldingBall")) //if holding a ball
                 {
-                    Debug.Log("share " + share.throws);
+                    //Debug.Log("share " + share.throws);
                     if (share.throws <= (set.Rounds / 2))
                     {
-                        Debug.Log("HoldBall");
+                        //Debug.Log("HoldBall");
                         if (rand == 1) //if random number is 1 throw to AI
                         {
                             anim.SetTrigger("isThrowing");
@@ -133,7 +160,7 @@ public class Thrower : MonoBehaviour {
     void ReleaseBall()
     {
         Sharer share = Ball.GetComponent<Sharer>();
-        if (set.GameMode == "Inclusive")
+        if (set.GameMode == "Inclusive" || set.GameMode == "Random Inclusive")
         {
             if (rand == 1)
             {
@@ -172,7 +199,7 @@ public class Thrower : MonoBehaviour {
                 Updater();
             }
         }
-        Debug.Log(share.throws);
+        //Debug.Log(share.throws);
     }
 
     public void catchMe()
