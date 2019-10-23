@@ -6,13 +6,15 @@ using UnityEngine.UI;
 
 public class Thrower : MonoBehaviour {
 
-    //create variable
+    //create variables
     public GameObject Ball;
     public GameObject BallHandL;
     public GameObject parentA;
     public GameObject parentP;
     public GameObject AJR;
     public GameObject PR;
+    public GameObject SR;
+    public GameObject JR;
 
     public JSONData set;
     static Animator anim;
@@ -26,13 +28,27 @@ public class Thrower : MonoBehaviour {
 
         //Debug.Log(set.Rounds);
 
-        if (set.Gender == "Only Girls")
+        if (set.Age == "Child")
         {
-            anim = PR.GetComponent<Animator>();
+            if (set.Gender == "Only Girls")
+            {
+                anim = PR.GetComponent<Animator>();
+            }
+            else
+            {
+                anim = AJR.GetComponent<Animator>();
+            }
         }
         else
         {
-            anim = AJR.GetComponent<Animator>();
+            if(set.Gender == "Only Girls")
+            {
+                anim = SR.GetComponent<Animator>();
+            }
+            else
+            {
+                anim = JR.GetComponent<Animator>();
+            }
         }
 
         anim.SetBool("isHoldingBall", true); //initialise as holding ball
