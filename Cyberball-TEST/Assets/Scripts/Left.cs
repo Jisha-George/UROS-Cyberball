@@ -69,7 +69,7 @@ public class Left : MonoBehaviour {
         {
             yield return new WaitForSeconds(randomWait); //call random fucntion
             randGen();
-          // Debug.Log("LRandom " + rand);
+           Debug.Log("LRandom " + rand);
 
             if (set.GameMode == "Inclusive" || set.GameMode == "Random Inclusive")
             {
@@ -79,11 +79,13 @@ public class Left : MonoBehaviour {
                     {
                         anim.SetTrigger("isThrowing");
                         ThrowBall();
+                        Debug.Log("I1");
                     }
                     else //if random number is 2 the AI throws to the player
                     {
                         anim.SetTrigger("L2P");
                         ThrowBall();
+                        Debug.Log("I2");
                     }
                 }
             }
@@ -94,29 +96,31 @@ public class Left : MonoBehaviour {
                    // Debug.Log("Share" + share.throws);
                     if (share.throws <= (set.Rounds / 2))
                     {
-                       
                         if (rand == 1) //if random number is 1 throw to AI
                         {
                             anim.SetTrigger("isThrowing");
                             ThrowBall();
+                            Debug.Log("E1");
                         }
                         else //if random number is 2 the AI throws to the player
                         {
-                            
                             anim.SetTrigger("L2P");
                             ThrowBall();
+                            Debug.Log("E2");
                         }
                     }
                     else
                     {
                         anim.SetTrigger("isThrowing");
                         ThrowBall();
+                        Debug.Log("Ex1");
                     }
                 }
             }
         }
         else
         {
+            Debug.Log("pop");
             share.popUp.SetActive(true);
             //SceneManager.LoadScene("Thank You");
         }

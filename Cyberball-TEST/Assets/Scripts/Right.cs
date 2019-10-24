@@ -104,7 +104,7 @@ public class Right : MonoBehaviour {
             rand = 1;
         }
 
-        Debug.Log(rand);
+        //Debug.Log(rand);
     }
 
     //wait random seconds
@@ -127,11 +127,13 @@ public class Right : MonoBehaviour {
                     {
                         anim.SetTrigger("isThrowing");
                         ThrowBall();
+                        Debug.Log("I1");
                     }
                     else //if random number is 2 the AI throws to the player
                     {
                         anim.SetTrigger("T2P");
                         ThrowBall();
+                        Debug.Log("I2");
                     }
                 }
             }
@@ -147,17 +149,20 @@ public class Right : MonoBehaviour {
                         {
                             anim.SetTrigger("isThrowing");
                             ThrowBall();
+                            Debug.Log("E1");
                         }
                         else //if random number is 2 the AI throws to the player
                         {
                             anim.SetTrigger("T2P");
                             ThrowBall();
+                            Debug.Log("E2");
                         }
                     }
                     else
                     {
                         anim.SetTrigger("isThrowing");
                         ThrowBall();
+                        Debug.Log("Ex1");
                     }
                 }
             }

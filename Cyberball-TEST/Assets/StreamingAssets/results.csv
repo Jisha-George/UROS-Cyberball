@@ -1,1 +1,2 @@
-Date_Time,Gamemode,Age,Gender,Rounds,P_Catch_Count,Emotional_Rating
+Date_Time,Gamemode,Age,Gender,Rounds,P_Catch_Count,VALENCE,AROUSAL,DOMINANCE
+Friday 25 October 2019 12:34 AM,Random Inclusive,Child,Both Boys and Girls,3,2,5,4,3

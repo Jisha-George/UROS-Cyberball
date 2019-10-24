@@ -8,6 +8,7 @@ using System.IO;
 public class ButtonScript : MonoBehaviour {
 
     public GameObject popup;
+    public GameObject Ball;
     public JSONData set;
 
     void Start()
@@ -16,7 +17,6 @@ public class ButtonScript : MonoBehaviour {
     }
     public void PlayB()
     {
-        
         SceneManager.LoadScene("Settings");
     }    
 
@@ -46,75 +46,40 @@ public class ButtonScript : MonoBehaviour {
     {
         //quit
         //Debug.Log("Quit!");
-        string path = "C:/Users/computing/AppData/LocalLow/UROS/Cyberball-TEST/data.json";
+        string path = "data.json";
         set = new JSONData(path);
-        new DataSaver(set.GameMode, set.Age, set.Gender, set.Rounds.ToString(), "", "");
+        Sharer share = Ball.GetComponent<Sharer>();
+        new DataSaver(set.GameMode, set.Age, set.Gender, set.Rounds.ToString(), share.counter.ToString(), VALENCE,AROUSAL,DOMINANCE);
         Application.Quit();
-    }
-
-    public void V1()
-    {
 
     }
+ 
+    public string VALENCE;
+    public string AROUSAL;
+    public string DOMINANCE;
 
-    public void V2()
-    {
+    public void selectMe(Button button) {
+        string name = button.name;
+        string parentName = button.transform.parent.name;
 
-    }
-    public void V3()
-    {
+        //Debug.Log("parentName(" + parentName + ") name(" + name + ")");
 
-    }
-    public void V4()
-    {
+        if (parentName=="VALENCE")
+            VALENCE = name;
 
-    }
-    public void V5()
-    {
+        if (parentName=="AROUSAL")
+            AROUSAL = name;
 
-    }
+        if (parentName=="DOMINANCE")
+            DOMINANCE = name;
 
-    public void A1()
-    {
+        foreach (Transform child in button.transform.parent.transform)
+        {
+            if (child.name == name)//Button Not Clicked
+                child.GetComponent<Image>().color = new Color32(0, 255, 255, 100);
+            else //Button Clicked
+                child.GetComponent<Image>().color = new Color32(255, 0, 0, 0);
 
-    }
-
-    public void A2()
-    {
-
-    }
-    public void A3()
-    {
-
-    }
-    public void A4()
-    {
-
-    }
-    public void A5()
-    {
-
-    }
-
-    public void D1()
-    {
-
-    }
-
-    public void D2()
-    {
-
-    }
-    public void D3()
-    {
-
-    }
-    public void D4()
-    {
-
-    }
-    public void D5()
-    {
-
+        }
     }
 }

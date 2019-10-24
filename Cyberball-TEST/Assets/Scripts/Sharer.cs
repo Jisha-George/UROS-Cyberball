@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Sharer : MonoBehaviour {
 
-    public int throws;
+    public int throws, counter;
     public GameObject popUp;
     public GameObject BL;
     public GameObject BR;

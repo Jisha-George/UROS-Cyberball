@@ -41,6 +41,7 @@ public class Hand : MonoBehaviour {
     {
         Sharer share = Ball.GetComponent<Sharer>();
         share.throws++;
+        
     }
 
     public void CatchBall()
@@ -58,6 +59,7 @@ public class Hand : MonoBehaviour {
         PlayerBall.SetActive(true);
         anim.SetBool("Ball", true);
         Sharer share = Ball.GetComponent<Sharer>();
+        share.counter++;
         if (share.throws == set.Rounds)
         {
             share.popUp.SetActive(true);
