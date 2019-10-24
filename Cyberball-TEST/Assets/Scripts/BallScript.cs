@@ -9,10 +9,10 @@ public class BallScript : MonoBehaviour {
     public GameObject Ball;
     public GameObject HandL;
     public GameObject HandR;
-    public GameObject AJR;
-    public GameObject AJL;
-    public GameObject PL;
-    public GameObject PR;
+    public GameObject BR;
+    public GameObject BL;
+    public GameObject GL;
+    public GameObject GR;
 
     static Animator anim;
 
@@ -81,33 +81,33 @@ public class BallScript : MonoBehaviour {
 
     public void rightplayercatch()
     {
-        Thrower RightScript = (Thrower)AJR.GetComponent("Thrower");
+        Right RightScript = (Right)BR.GetComponent("Right");
         RightScript.RightPlayerCatch();
-        Thrower RightScriptP = (Thrower)PR.GetComponent("Thrower");
+        Right RightScriptP = (Right)GR.GetComponent("Right");
         RightScriptP.RightPlayerCatch();
     }
 
     public void leftplayercatch()
     {
-        Player LeftScript = (Player)AJL.GetComponent("Player");
+        Left LeftScript = (Left)BL.GetComponent("Left");
         LeftScript.LeftPlayerCatch();
-        Player LeftScriptP = (Player)PL.GetComponent("Player");
+        Left LeftScriptP = (Left)GL.GetComponent("Left");
         LeftScriptP.LeftPlayerCatch();
     }
 
     public void leftcatch()
     {
-        Player LeftScript = (Player)AJL.GetComponent("Player");
+        Left LeftScript = (Left)BL.GetComponent("Left");
         LeftScript.LeftCatch();
-        Player LeftScriptP = (Player)PL.GetComponent("Player");
+        Left LeftScriptP = (Left)GL.GetComponent("Left");
         LeftScriptP.LeftCatch();
     }
 
     public void rightcatch()
     {
-        Thrower RightScript = (Thrower)AJR.GetComponent("Thrower");
+        Right RightScript = (Right)BR.GetComponent("Right");
         RightScript.RightCatch();
-        Thrower RightScriptP = (Thrower)PR.GetComponent("Thrower");
+        Right RightScriptP = (Right)GR.GetComponent("Right");
         RightScriptP.RightCatch();
     }
 }

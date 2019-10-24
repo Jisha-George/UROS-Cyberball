@@ -63,10 +63,10 @@
      <Compile Include="Assets\Scripts\HandRight.cs" />
      <Compile Include="Assets\Scripts\JSONReader.cs" />
      <Compile Include="Assets\Scripts\JSONWriter.cs" />
-     <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\Left.cs" />
+     <Compile Include="Assets\Scripts\Right.cs" />
      <Compile Include="Assets\Scripts\Sharer.cs" />
      <Compile Include="Assets\Scripts\Throw2Player.cs" />
-     <Compile Include="Assets\Scripts\Thrower.cs" />
      <Compile Include="Assets\Scripts\loadingtext.cs" />
      <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\CameraLogic.cs" />
      <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\Demo.cs" />

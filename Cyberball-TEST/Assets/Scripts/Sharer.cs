@@ -6,10 +6,10 @@ public class Sharer : MonoBehaviour {
 
     public int throws;
     public GameObject popUp;
-    public GameObject AJL;
-    public GameObject AJR;
-    public GameObject PL;
-    public GameObject PR;
+    public GameObject BL;
+    public GameObject BR;
+    public GameObject GL;
+    public GameObject GR;
 
     public JSONData set;
 
@@ -22,26 +22,24 @@ public class Sharer : MonoBehaviour {
 
         if (set.Gender == "Only Girls")
         {
-            PR.SetActive(true);
-            PL.SetActive(true);
-            AJL.SetActive(false);
-            AJR.SetActive(false);
+            GR.SetActive(true);
+            GL.SetActive(true);
+            BL.SetActive(false);
+            BR.SetActive(false);
         }
         else if (set.Gender == "Only Boys")
         {
-            AJR.SetActive(true);
-            AJL.SetActive(true);
-            PL.SetActive(false);
-            PR.SetActive(false);
+            BR.SetActive(true);
+            BL.SetActive(true);
+            GL.SetActive(false);
+            GR.SetActive(false);
         }
         else
         {
-            AJR.SetActive(true);
-            AJL.SetActive(false);
-            PL.SetActive(true);
-            PR.SetActive(false);
+            BR.SetActive(true);
+            BL.SetActive(false);
+            GL.SetActive(true);
+            GR.SetActive(false);
         }
     }
-    
-
 }
