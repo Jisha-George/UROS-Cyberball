@@ -10,10 +10,26 @@ public class ButtonScript : MonoBehaviour {
     public GameObject popup;
     public GameObject Ball;
     public JSONData set;
-
+    public GameObject menu;
     void Start()
     {
+        if (SceneManager.GetActiveScene().name == "Thank You")
+        {
+            StartCoroutine(Example());
+        }
+    }
 
+    IEnumerator Example()
+    {
+        yield return new WaitForSeconds(5);
+        menu.SetActive(true);
+    }
+    void Update()
+    {
+        if (SceneManager.GetActiveScene().name == "Thank You" && Input.GetKeyDown("escape"))
+        {
+            BackB();
+        }
     }
     public void PlayB()
     {
@@ -23,6 +39,7 @@ public class ButtonScript : MonoBehaviour {
     public void SettingsB()
     {
         //load settings
+        SceneManager.LoadScene("Welcome Screen");
         
     }
 
@@ -39,19 +56,18 @@ public class ButtonScript : MonoBehaviour {
     public void FinB()
     {
         popup.SetActive(false);
-        SceneManager.LoadScene("Loading");
+        string path = "data.json";
+        set = new JSONData(path);
+        Sharer share = Ball.GetComponent<Sharer>();
+        new DataSaver(set.GameMode, set.Age, set.Gender, set.Rounds.ToString(), share.counter.ToString(), VALENCE, AROUSAL, DOMINANCE);
+        
     }
 
     public void QuitB()
     {
         //quit
-        //Debug.Log("Quit!");
-        string path = "data.json";
-        set = new JSONData(path);
-        Sharer share = Ball.GetComponent<Sharer>();
-        new DataSaver(set.GameMode, set.Age, set.Gender, set.Rounds.ToString(), share.counter.ToString(), VALENCE,AROUSAL,DOMINANCE);
         Application.Quit();
-
+        //Debug.Log("Quit!");
     }
  
     public string VALENCE;
