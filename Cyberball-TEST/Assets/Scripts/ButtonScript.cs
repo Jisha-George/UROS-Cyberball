@@ -71,7 +71,6 @@ public class ButtonScript : MonoBehaviour {
     {
         //quit
         Application.Quit();
-        //Debug.Log("Quit!");
     }
  
     public string VALENCE;
@@ -81,8 +80,6 @@ public class ButtonScript : MonoBehaviour {
     public void selectMe(Button button) {
         string name = button.name;
         string parentName = button.transform.parent.name;
-
-        //Debug.Log("parentName(" + parentName + ") name(" + name + ")");
 
         if (parentName=="VALENCE")
             VALENCE = name;
