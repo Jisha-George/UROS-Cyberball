@@ -28,28 +28,14 @@ public class Right : MonoBehaviour {
 
         //Debug.Log(set.Rounds);
 
-        if (set.Age == "Child")
+        if (set.Gender == "Only Girls")
         {
-            if (set.Gender == "Only Girls")
-            {
-                anim = GR.GetComponent<Animator>();
-            }
-            else
-            {
-                anim = BR.GetComponent<Animator>();
-            }
+            anim = GR.GetComponent<Animator>();
         }
-        //else
-        //{
-        //    if(set.Gender == "Only Girls")
-        //    {
-        //        anim = SR.GetComponent<Animator>();
-        //    }
-        //    else
-        //    {
-        //        anim = JR.GetComponent<Animator>();
-        //    }
-        //}
+        else
+        {
+            anim = BR.GetComponent<Animator>();
+        }
 
         anim.SetBool("isHoldingBall", true); //initialise as holding ball
 
@@ -60,9 +46,11 @@ public class Right : MonoBehaviour {
         else
         {
             BallHandL.transform.parent = parentB.transform;
-            //Debug.Log(BallHandL.transform.localScale);
-            //BallHandL.transform.localScale = new Vector3(0.3f,0.3f,0.3f);
-            //BallHandL.transform.rotation = new Quaternion(0,0,0,0);
+            if(set.Age == "Teen")
+            {
+                BallHandL.transform.localScale = new Vector3(0.24f,0.24f,0.24f);
+                BallHandL.transform.rotation = new Quaternion(0,0,0,0);
+            }
         }
         
         if (set.GameMode == "Random")
@@ -77,12 +65,11 @@ public class Right : MonoBehaviour {
             {
                 set.GameMode = "Random Exclusive";
             }
-        }
-
+        } 
     }
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update () {
             Ball.transform.parent = null;
     }
 
@@ -94,17 +81,7 @@ public class Right : MonoBehaviour {
 
     public void randGen()
     {
-        Sharer share = Ball.GetComponent<Sharer>();
-        if (share.throws < set.Rounds)
-        {
-            rand = Random.Range(1, 3);
-        }
-        else
-        {
-            rand = 1;
-        }
-
-        //Debug.Log(rand);
+        rand = Random.Range(1, 3);
     }
 
     //wait random seconds
@@ -118,22 +95,22 @@ public class Right : MonoBehaviour {
             yield return new WaitForSeconds(randomWait); //call random fucntion
             randGen();
             //Debug.Log("Random " + rand);
+
             if (set.GameMode == "Inclusive" || set.GameMode == "Random Inclusive")
             {
                 if (anim.GetBool("isHoldingBall")) //if holding a ball
                 {
-                    //Debug.Log("HoldBall");
                     if (rand == 1) //if random number is 1 throw to AI
                     {
                         anim.SetTrigger("isThrowing");
                         ThrowBall();
-                        Debug.Log("I1");
+                        //Debug.Log("I1");
                     }
                     else //if random number is 2 the AI throws to the player
                     {
                         anim.SetTrigger("T2P");
                         ThrowBall();
-                        Debug.Log("I2");
+                       // Debug.Log("I2");
                     }
                 }
             }
@@ -149,20 +126,20 @@ public class Right : MonoBehaviour {
                         {
                             anim.SetTrigger("isThrowing");
                             ThrowBall();
-                            Debug.Log("E1");
+                           // Debug.Log("E1");
                         }
                         else //if random number is 2 the AI throws to the player
                         {
                             anim.SetTrigger("T2P");
                             ThrowBall();
-                            Debug.Log("E2");
+                            //Debug.Log("E2");
                         }
                     }
                     else
                     {
                         anim.SetTrigger("isThrowing");
                         ThrowBall();
-                        Debug.Log("Ex1");
+                        //Debug.Log("Ex1");
                     }
                 }
             }
@@ -170,11 +147,14 @@ public class Right : MonoBehaviour {
         else
         {
             share.popUp.SetActive(true);
+            GameObject.Find("PlayerLeftHand").SetActive(false);
+            GameObject.Find("PlayerRightHand").SetActive(false);
             //SceneManager.LoadScene("Thank You");
         }
     }
 
-    void ThrowBall() {
+    void ThrowBall() 
+    {
         anim.SetBool("isHoldingBall", false);
     }
 

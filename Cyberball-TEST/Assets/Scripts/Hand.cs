@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Hand : MonoBehaviour {
 
     public GameObject parent;
+    public GameObject RightHand;
     public GameObject PlayerBall;
     public GameObject Ball;
     public JSONData set;
@@ -35,23 +36,24 @@ public class Hand : MonoBehaviour {
             Left.interactable = false;
             Right.interactable = false;
         }
-        
+
     }
     public void Updater()
     {
         Sharer share = Ball.GetComponent<Sharer>();
         share.throws++;
-        
     }
 
     public void CatchBall()
     {
         anim.SetTrigger("Catching");
+        Updater();
     }
 
     public void CatchBallLeft()
     {
         anim.SetTrigger("CatchLeft");
+
     }
 
     public void BallCatch() {
@@ -63,6 +65,10 @@ public class Hand : MonoBehaviour {
         if (share.throws == set.Rounds)
         {
             share.popUp.SetActive(true);
+            Left.interactable = false;
+            Right.interactable = false;
+            parent.SetActive(false);
+            RightHand.SetActive(false);
         }
     }
 
@@ -72,7 +78,6 @@ public class Hand : MonoBehaviour {
         {
             anim.SetTrigger("Throwing");
             anim.SetBool("Ball", false);
-            Updater();
         }
     }
 
@@ -82,7 +87,6 @@ public class Hand : MonoBehaviour {
         {
             anim.SetTrigger("ThrowLeft");
             anim.SetBool("Ball", false);
-            Updater();
         }
     }
 

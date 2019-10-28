@@ -14,11 +14,15 @@ public class BallScript : MonoBehaviour {
     public GameObject GL;
     public GameObject GR;
 
+    JSONData set;
+
     static Animator anim;
 
     // Use this for initialization
     void Start ()
     {
+        string path = (Application.streamingAssetsPath + "/data.json");
+        set = new JSONData(path);
         anim = Ball.GetComponent<Animator>();
     }
 	
@@ -31,36 +35,58 @@ public class BallScript : MonoBehaviour {
     {
         BallHandL.SetActive(false);
         Ball.SetActive(true);
-        //Ball.transform.parent = null;
-        anim.SetTrigger("isThrowing");
-        //Debug.Log("poof");
+        if (set.Age == "Child")
+        {
+            anim.SetTrigger("isThrowing");
+        }
+        else
+        {
+            anim.SetTrigger("TisT");
+        }
     }
 
     public void RelPlayer()
     {
         BallHandL.SetActive(false);
         Ball.SetActive(true);
-        //Ball.transform.parent = null;
-        anim.SetTrigger("T2P");
-        //Debug.Log("PlayerCatch!");
+        if(set.Age == "Child")
+        {
+            anim.SetTrigger("T2P");
+        }
+        else
+        {
+            anim.SetTrigger("TT2P");
+        }
     }
 
     public void RelL()
     {
         BallHandR.SetActive(false);
         Ball.SetActive(true);
-       // Ball.transform.parent = null;
-        anim.SetTrigger("Throw");
-        //Debug.Log("Right");
+
+        if (set.Age == "Child")
+        {
+            anim.SetTrigger("Throw");
+        }
+        else
+        {
+            anim.SetTrigger("TThrow");
+        }
     }
 
     public void RelPlayerL()
     {
         BallHandR.SetActive(false);
         Ball.SetActive(true);
-       // Ball.transform.parent = null;
-        anim.SetTrigger("L2P");
-        //Debug.Log("PlayerCatch!");
+        
+        if (set.Age == "Child")
+        {
+            anim.SetTrigger("L2P");
+        }
+        else
+        {
+            anim.SetTrigger("TL2P");
+        }
     }
 
     public void playercatch()

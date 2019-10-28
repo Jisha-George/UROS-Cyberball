@@ -22,7 +22,7 @@ public class JSONWriter : MonoBehaviour {
     void Start()
     {
         path = Application.streamingAssetsPath + "/" + filename;
-        Debug.Log(path);
+      //  Debug.Log(path);
         //C:\Users\Student\AppData\LocalLow\UROS\JSON_TEST
 
         if (File.Exists(path))
@@ -78,7 +78,7 @@ public class JSONWriter : MonoBehaviour {
                 GameMode = "Random Exclusive";
             }
         }
-        Debug.Log(GameMode);
+       // Debug.Log(GameMode);
         return GameMode;
     }
 

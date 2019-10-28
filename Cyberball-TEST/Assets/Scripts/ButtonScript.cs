@@ -21,7 +21,7 @@ public class ButtonScript : MonoBehaviour {
 
     IEnumerator Example()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(120);
         menu.SetActive(true);
     }
     void Update()
@@ -38,14 +38,18 @@ public class ButtonScript : MonoBehaviour {
 
     public void SettingsB()
     {
-        //load settings
-        SceneManager.LoadScene("Welcome Screen");
-        
+        //load Instructions
+        popup.SetActive(true);
     }
 
     public void BackB()
     {
         SceneManager.LoadScene("Welcome Screen");
+    }
+
+    public void OkayB()
+    {
+        popup.SetActive(false);
     }
 
     public void StartB()
@@ -56,11 +60,11 @@ public class ButtonScript : MonoBehaviour {
     public void FinB()
     {
         popup.SetActive(false);
+        SceneManager.LoadScene("Thank You");
         string path = "data.json";
         set = new JSONData(path);
         Sharer share = Ball.GetComponent<Sharer>();
         new DataSaver(set.GameMode, set.Age, set.Gender, set.Rounds.ToString(), share.counter.ToString(), VALENCE, AROUSAL, DOMINANCE);
-        
     }
 
     public void QuitB()
@@ -95,7 +99,6 @@ public class ButtonScript : MonoBehaviour {
                 child.GetComponent<Image>().color = new Color32(0, 255, 255, 100);
             else //Button Clicked
                 child.GetComponent<Image>().color = new Color32(255, 0, 0, 0);
-
         }
     }
 }

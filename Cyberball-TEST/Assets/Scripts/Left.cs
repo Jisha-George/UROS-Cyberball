@@ -33,11 +33,15 @@ public class Left : MonoBehaviour {
         anim.SetBool("isHoldingBall", false);
         BallHandR.SetActive(false);
 
-
         if (set.Gender == "Only Boys")
         {
             //Debug.Log(set.Gender);
             BallHandR.transform.parent = parentB.transform;
+            if (set.Age == "Teen")
+            {
+                BallHandR.transform.localScale = new Vector3(0.24f, 0.24f, 0.24f);
+                BallHandR.transform.rotation = new Quaternion(0, 0, 0, 0);
+            }
         }
         else
         {
@@ -65,11 +69,12 @@ public class Left : MonoBehaviour {
     {
         Sharer share = Ball.GetComponent<Sharer>();
         var randomWait = Random.Range(1, 4); //between 1 to 3 seconds
+        
         if (share.throws < set.Rounds)
         {
             yield return new WaitForSeconds(randomWait); //call random fucntion
             randGen();
-           Debug.Log("LRandom " + rand);
+           //Debug.Log("LRandom " + rand);
 
             if (set.GameMode == "Inclusive" || set.GameMode == "Random Inclusive")
             {
@@ -79,13 +84,13 @@ public class Left : MonoBehaviour {
                     {
                         anim.SetTrigger("isThrowing");
                         ThrowBall();
-                        Debug.Log("I1");
+                      //  Debug.Log("I1");
                     }
                     else //if random number is 2 the AI throws to the player
                     {
                         anim.SetTrigger("L2P");
                         ThrowBall();
-                        Debug.Log("I2");
+                       // Debug.Log("I2");
                     }
                 }
             }
@@ -100,29 +105,31 @@ public class Left : MonoBehaviour {
                         {
                             anim.SetTrigger("isThrowing");
                             ThrowBall();
-                            Debug.Log("E1");
+                           // Debug.Log("E1");
                         }
                         else //if random number is 2 the AI throws to the player
                         {
                             anim.SetTrigger("L2P");
                             ThrowBall();
-                            Debug.Log("E2");
+                          //  Debug.Log("E2");
                         }
                     }
                     else
                     {
                         anim.SetTrigger("isThrowing");
                         ThrowBall();
-                        Debug.Log("Ex1");
+                       // Debug.Log("Ex1");
                     }
                 }
             }
         }
         else
         {
-            Debug.Log("pop");
+           // Debug.Log("pop");
             share.popUp.SetActive(true);
             //SceneManager.LoadScene("Thank You");
+            GameObject.Find("PlayerLeftHand").SetActive(false);
+            GameObject.Find("PlayerRightHand").SetActive(false);
         }
     }
 
@@ -161,7 +168,7 @@ public class Left : MonoBehaviour {
                 }
                 else
                 {
-                    Debug.Log("HoldBall");
+                    //Debug.Log("HoldBall");
                     BallScript ballscript = (BallScript)BallHandR.GetComponent("BallScript");
                     ballscript.RelPlayerL();
                     Updater();
@@ -197,7 +204,6 @@ public class Left : MonoBehaviour {
         }
         else
         {
-
             BallHandR.transform.parent = parentG.transform;
         }
         BallHandR.SetActive(true);
