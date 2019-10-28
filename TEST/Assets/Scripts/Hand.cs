@@ -21,7 +21,7 @@ public class Hand : MonoBehaviour {
         Vector3 BPos = PlayerBall.transform.position;
         Vector3 RPos = movingBall.transform.position;
         
-        if (Vector3.Distance(RPos, BPos) <= 200 && Vector3.Distance(RPos,BPos) >= 190)
+        if (Vector3.Distance(RPos, BPos) <= 200 && Vector3.Distance(RPos,BPos) >= 198)
         {
             anim.SetTrigger("Catching");
         }
@@ -32,12 +32,23 @@ public class Hand : MonoBehaviour {
         PlayerBall.transform.parent = parent.transform;
         movingBall.SetActive(false);
         anim.SetBool("Ball", true);
-    } 
-    
-    //if (anim.GetBool("Ball")){
-    //    if (Input.GetMouseButtonDown(0)){
-    //        holdingBall = false;
-    //        anim.SetTrigger("isThrowing");
-    //    }
-    //}
+    }
+
+    public void BallThrow()
+    {
+       if (anim.GetBool("Ball"))
+       {
+            anim.SetBool("Ball", false);
+            anim.SetTrigger("Throwing");
+       }
+    }
+
+    public void ReleaseBall()
+    {
+        PlayerBall.SetActive(false);
+        PlayerBall.transform.parent = null;
+        movingBall.SetActive(true);
+        HandBall handBall = (HandBall)movingBall.GetComponent("HandBall");
+        handBall.PlayerRel();
+    }
 }

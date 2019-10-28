@@ -11,8 +11,9 @@ public class BallScript : MonoBehaviour {
     static Animator anim;
 
     // Use this for initialization
-    void Start () {
-        transform.parent = parentbone.transform;
+    void Start ()
+    {
+        BallHandL.transform.parent = parentbone.transform;
         anim = GetComponent<Animator>();
     }
 	
@@ -36,4 +37,12 @@ public class BallScript : MonoBehaviour {
         anim.SetTrigger("T2P");
         Debug.Log("PlayerCatch!");
     }
+
+    //public void PlayerRel()
+    //{
+    //    Ball.transform.parent = null;
+    //    PlayerBall.SetActive(false);
+    //    anim.SetTrigger("PlayerThrowR");
+    //    Debug.Log("PlayerCatch!");
+    //}
 }
